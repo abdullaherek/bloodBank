@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    list-style: none;
+}
+
+
+
+body
+{
+    background: #ffffff;
+    font-family: sans-serif;
+   
+}
+
+ul {
+    list-style-type: none;
+    background:red;
+    list-style: none;
+    padding-left: 0; 
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+
+
+}
+li {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    background-color: red;
+    line-height: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+
+}
+li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 25px 16px;
+    text-decoration: none;
+
+}
+li a:hover{
+    background-color: black;
+}
+
+
+
+.alan{
+    display: flex;
+    width: 100%;
+    height: 31.10rem;
+    
+   
+    align-items: center;
+   
+    flex-direction: row; /*ALT ALTA sıralıyor*/
+    justify-content: center;/*divi ortalıyor*/
+    align-items: center; /*  altta açtığımız yazıları ortalıyor    */
+}
+
+
+
+ .butonlar{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+
+    
+ }
+    .button {
+        background-color:#44c767;
+        border:1px solid #18ab29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:19px;
+        padding:100px 103px;
+        border-radius: 20px;
+       width: 100%;
+        text-shadow:0px 1px 0px #2f6627;
+        text-decoration: none;
+        
+        
+        }
+        .button:hover {
+        background-color:#5cbf2a;
+        }
+        
+        .button a{
+
+            height: 1.35rem;
+
+    border: 1px solid red;
+    text-decoration: none;
+    border: none;
+
+        }
+ 
+
+ 
+@media(max-widht:380px){
+   body
+    {
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+
+    
+
+}

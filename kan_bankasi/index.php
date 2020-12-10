@@ -10,7 +10,7 @@
 
 <body>
  
-    <?php $deneme=100; ?>
+    
 
 <?php include_once('content/headerMenu.php');?>
 

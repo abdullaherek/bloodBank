@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-    <link href ="/kan_bankasi/css/style.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="css/headermenu.css?key=<?=time()?>">
+     
     <title>Document</title>
     
 </head>
@@ -12,11 +12,11 @@
 
 
 
-<div class="menu">
+<div id="menu">
 <ul>
 <li><a href="index.php">Ana Sayfa</a> </li>
-<li><a href="#bagis_hakkinda">Bağış Hakkında</a> </li>
-<li><a href="#iletisim">İletişim</a> </li>
+<li><a href="aboutus.php">Bağış Hakkında</a> </li>
+<li><a href="contact.php">İletişim</a> </li>
 <li><a href="#cikis">Çıkış</a> </li>
 
        

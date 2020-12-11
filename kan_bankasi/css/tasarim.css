@@ -1,117 +1,220 @@
 * {
     padding: 0;
     margin: 0;
-    border: 0;
-    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    
 }
 
 
 
 body
 {
+  padding: 0;
+  margin: 0;
+  border: 0;
     background: #ffffff;
     font-family: sans-serif;
+ background-image:url(../images/index2.jpg);
+    background-size:cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat; 
+
+    
+
+  
    
-}
+} 
 
-ul {
-    list-style-type: none;
-    background:red;
-    list-style: none;
-    padding-left: 0; 
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-
-
-}
-li {
-    display: inline-block;
-    width: 200px;
-    height: 100px;
-    background-color: red;
-    line-height: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-
-}
-li a{
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 25px 16px;
-    text-decoration: none;
-
-}
-li a:hover{
-    background-color: black;
-}
 
 
 
 .alan{
     display: flex;
     width: 100%;
-    height: 31.10rem;
-    
+    height: 45.10rem;
+
+ 
+  
+
    
-    align-items: center;
-   
-    flex-direction: row; /*ALT ALTA sıralıyor*/
+   /*ALT ALTA sıralıyor*/
     justify-content: center;/*divi ortalıyor*/
-    align-items: center; /*  altta açtığımız yazıları ortalıyor    */
+   /*  altta açtığımız yazıları ortalıyor    */
+
+   
+   
+  
 }
+
+.alans{
+    
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    height: 40rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+
+}
+
+
+.box {
+  display: flex;
+  width:auto;
+
+
+  background-color:#a200ff;
+  margin:0 auto;
+  float:left;
+  font-size:2.5rem;
+  padding:5px;
+  color:#fff;
+}
+
+/* Step 1: Build the Animation */
+@-webkit-keyframes aniload {
+  from {-webkit-transform:translate(0px, 1000px)}
+  to   {-webkit-transform:translate(0px, 0px)}
+}
+
+@-moz-keyframes aniload {
+  from {-moz-transform:translate(0px, 1000px)}
+  to   {-moz-transform:translate(0px, 0px)}
+}
+
+@-ms-keyframes aniload {
+  from {-ms-transform:translate(0px, 1000px)}
+  to   {-ms-transform:translate(0px, 0px)}
+}
+
+@-o-keyframes aniload {
+  from {-o-transform:translate(0px, 1000px)}
+  to   {-o-transform:translate(0px, 0px)}
+}
+
+@keyframes aniload {
+  from {transform:translate(0px, 1000px)}
+  to   {transform:translate(0px, 0px)}
+}
+
+/* Step 2: Call the Animation */
+#box1 {
+  -webkit-animation:aniload 1s;
+  -moz-animation:aniload 1s;
+  -ms-animation:aniload 1s;
+  -o-animation:aniload 1s;
+  animation:aniload 1s;
+}
+
+#box2 {
+  -webkit-animation:aniload 2s;
+  -moz-animation:aniload 2s;
+  -ms-animation:aniload 2s;
+  -o-animation:aniload 2s;
+  animation:aniload 2s;
+}
+
+#box3 { 
+  
+  -webkit-animation:aniload 3s;
+  -moz-animation:aniload 3s;
+  -ms-animation:aniload 3s;
+  -o-animation:aniload 3s;
+  animation:aniload 3s;
+}
+
+#box4 {
+  -webkit-animation:aniload 4s;
+  -moz-animation:aniload 4s;
+  -ms-animation:aniload 4s;
+  -o-animation:aniload 4s;
+  animation:aniload 4s;
+}
+
+#box5 {
+  -webkit-animation:aniload 5s;
+  -moz-animation:aniload 5s;
+  -ms-animation:aniload 5s;
+  -o-animation:aniload 5s;
+  animation:aniload 5s;
+}
+
+#box6 {
+  -webkit-animation:aniload 6s;
+  -moz-animation:aniload 6s;
+  -ms-animation:aniload 6s;
+  -o-animation:aniload 6s;
+  animation:aniload 6s;
+}
+
 
 
 
  .butonlar{
+     width: 60%;
+     height: 35rem;
    display: flex;
-   flex-direction: row;
-   justify-content: space-between;
+  
+   align-items: center;
+   justify-content: space-evenly;
+
+   text-decoration: none;
 
     
  }
-    .button {
-        background-color:#44c767;
-        border:1px solid #18ab29;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font-family:Arial;
-        font-size:19px;
-        padding:100px 103px;
-        border-radius: 20px;
-       width: 100%;
-        text-shadow:0px 1px 0px #2f6627;
-        text-decoration: none;
-        
-        
-        }
-        .button:hover {
-        background-color:#5cbf2a;
-        }
-        
-        .button a{
+    
 
-            height: 1.35rem;
-
-    border: 1px solid red;
-    text-decoration: none;
-    border: none;
-
-        }
- 
 
  
-@media(max-widht:380px){
-   body
+ 
+ .button a {
+  background-color:#44c767;
+  border-radius:2rem;
+  border:1px solid #18ab29;
+  display:inline-block;
+  font-size:1.5rem;
+  padding:1rem 2rem;
+  text-shadow:0px 1px 0px #2f6627;
+}
+.button a:hover {
+  background-color:#5cbf2a;
+}
+.button a:active {
+  position:relative;
+  top:1px;
+}
+
+
+
+
+
+  @media(max-widht:500px){
+    body
     {
-        display: flex;
+        
         height: 100%;
         width: 100%;
     }
 
-    
+    .alan{
+      width: 100%;
+      height: 45.10rem;
+      
+    }
 
-}
+    .alans{
+      width: 80%;
+      height: 40rem;
+
+    }
+
+    .butonlar{
+      width: 60%;
+     
+      height: 35rem;
+    }
+
+  }

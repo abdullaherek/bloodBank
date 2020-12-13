@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +53,7 @@
     </div>  
           
 </div>
-</form>
+
 
 </body>
 
@@ -60,15 +63,18 @@ require_once "includes/pdo.php";
 if($_POST){
 $kullanici_adi=$_POST['kadi'];
 $kullanici_sifre=$_POST['ksifre'];
+
 $rol1=1;
 $rol2=0;
 
     $kullanici_kontrol= $pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$kullanici_sifre' AND rol='$rol2' ")->fetch();
     $admin_kontrol=$pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$kullanici_sifre' AND rol='$rol1' ")->fetch();
     if ($kullanici_kontrol){/// roll 0 ise index sayfasına atacak////
-        echo "<script type='text/javascript'>alert('Anasayfaya Yönendiriliyorsunuz')</script>";
-        header("Refresh: 0; url= index.php");
-        
+	
+	$_SESSION["isim"] = $kullanici_kontrol['kullanici_adi'];
+        // echo "<script type='text/javascript'>alert('Anasayfaya Yönendiriliyorsunuz')</script>";
+         header("Refresh: 0; url= index.php");
+	
     }
     else if($admin_kontrol){ ///// roll 1 ise admin sayfasına atacak//////
         echo "<script type='text/javascript'>alert('Hoşgeldiniz, Sayın, $kullanici_adi Admin Sayfasına Yönendiriliyorsunuz')</script>";
@@ -80,10 +86,10 @@ $rol2=0;
         header("Refresh: 0; url= login.php");
     }
   
-
-
+	
 
 }
 
 ?>
+</form>
 </html>

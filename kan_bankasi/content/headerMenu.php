@@ -1,3 +1,7 @@
+<?php require_once "includes/pdo.php"; 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,25 +10,42 @@
 	<link rel="stylesheet" href="css/headermenu.css?key=<?=time()?>">
      
     <title>menu</title>
-    
+   
 </head>
 <body>
 
 <div class="topnav">
-  <a  href="index.php">Ana Sayfa</a> 
+ <a  href="index.php">Ana Sayfa</a> 
 <a href="aboutus.php">Bağış Hakkında</a> 
 <a href="contact.php">İletişim</a>
-<a href="login.php">Giriş</a>
+
+<?php
+session_start();
+if(!isset($_SESSION["isim"])){
+	
+                       
+                          echo '<a id="main" href ="login.php">Giriş Yap</a></li>';
+						   
+		
+						
+							
+                         }else{
+							 echo '<a id="main" href ="logout.php">Çıkış Yap</a></li>';
+									;
+							 }
+ ?>
+
 
 
 
   <div class="login-container">
    Hoşgeldiniz!
-      <input type="text" placeholder="Kullanıcı Adınız" name="username">
-      
+    
    
     
   </div>
+    
+   
 </div>
 </body>
 </html>

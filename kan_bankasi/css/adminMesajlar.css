@@ -188,6 +188,32 @@ justify-content: center;
     justify-content: center;
     
 }
+.MenuItem5{
+    display: flex;
+    width: 100%;
+    height: 9%;
+    background-color: rgb(255, 0, 0);
+    justify-content: center;
+    font-size: 1.4rem;
+    border: 0.15rem solid rgb(66, 66, 63);
+    border-bottom: 0.20rem solid rgb(66, 66, 63);
+    align-items: center;
+}
+.MenuItem5 a{
+    display: flex;
+    height: 100%; 
+    width: 100%;    
+    font-family: "Times New Roman", Times, serif;     
+    justify-content: center;  
+    align-items: center;
+    color:white;  
+ 
+}
+.MenuItem5 i{
+    display: flex;
+    justify-content: center;
+    
+}
 
 .AdminSection{
     display: flex;  
@@ -298,7 +324,18 @@ justify-content: center;
     text-decoration: none;
     color:white;
 }
-
+.MenuItem5:hover{
+    display: flex;   
+    height: 15%;
+    width: 100%;    
+    border: 0.15rem solid  rgb(246, 247, 248);
+    border-top: 0.20rem solid rgb(244, 247, 248);
+    transition: 1.25s;    
+}
+.MenuItem5 a:hover{
+    text-decoration: none;
+    color:white;
+}
 @media screen and (max-width:768px){
 
 .AdminContainer{
@@ -338,7 +375,7 @@ justify-content: center;
 }
 
 .MenuItem{
-    height: 20%;
+    height: 19%;
     justify-content: flex-start;
     text-align: center;
     
@@ -348,7 +385,7 @@ justify-content: center;
     text-align: center;
 }
 .MenuItem1{   
-  height: 20%;
+  height: 19%;
   justify-content: flex-start;
   text-align: center;
 }
@@ -358,14 +395,14 @@ justify-content: center;
     height:100% ;
 }
 .MenuItem2{
-    height: 20%;
+    height: 19%;
     
 }
 .MenuItem2 i{  
     width: 10%;
 }
 .MenuItem3{
-    height: 20%;
+    height: 19%;
     
 }
 .MenuItem3 i{    
@@ -373,10 +410,17 @@ justify-content: center;
     
 }
 .MenuItem4{ 
-    height: 20%;
+    height: 19%;
     
 }
 .MenuItem4 i{       
+    width: 10%;
+}
+.MenuItem5{ 
+    height: 19%;
+    
+}
+.MenuItem5 i{       
     width: 10%;
 }
 

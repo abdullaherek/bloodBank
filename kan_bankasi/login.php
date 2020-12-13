@@ -68,6 +68,7 @@ $rol2=0;
     if ($kullanici_kontrol){/// roll 0 ise index sayfasına atacak////
         echo "<script type='text/javascript'>alert('Anasayfaya Yönendiriliyorsunuz')</script>";
         header("Refresh: 0; url= index.php");
+        
     }
     else if($admin_kontrol){ ///// roll 1 ise admin sayfasına atacak//////
         echo "<script type='text/javascript'>alert('Hoşgeldiniz, Sayın, $kullanici_adi Admin Sayfasına Yönendiriliyorsunuz')</script>";
@@ -79,6 +80,8 @@ $rol2=0;
         header("Refresh: 0; url= login.php");
     }
   
+
+
 
 }
 

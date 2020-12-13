@@ -15,18 +15,21 @@
                         </div>
                         <div class="AdminMenuButtons">
                                 <div class="MenuItem">
-                                        <a href="adminKanBagislayanlar.php"><i class="fa fa-2x fa-tint"></i>&nbsp Güncel Kan Bağışlayanlar</a>
+                                <a href="index.php"><i class="fa fa-2x  fa-home"></i>&nbsp Anasayfa</a>                                        
                                 </div>
                                 <div class="MenuItem1">
-                                        <a href="AdminKanArayan.php"><i class="fa fa-2x fa-search"></i> Güncel Kan Arayanlar</a>
+                                        <a href="adminKanBagislayanlar.php"><i class="fa fa-2x fa-tint"></i>&nbsp Güncel Kan Bağışlayanlar</a>  
                                 </div>
                                 <div class="MenuItem2">
-                                        <a href="adminMesajlar.php"><i class="fa  fa-2x fa-commenting-o"></i>Mesajlar</a>
+                                        <a href="AdminKanArayan.php"><i class="fa fa-2x fa-search"></i> Güncel Kan Arayanlar</a>
                                 </div>
                                 <div class="MenuItem3">
-                                        <a href="AdminKullanicilar.php"><i class="fa  fa-2x fa-user"></i>Kullanıcılar</a>
+                                        <a href="adminMesajlar.php"><i class="fa  fa-2x fa-commenting-o"></i>Mesajlar</a> 
                                 </div>
                                 <div class="MenuItem4">
+                                        <a href="AdminKullanicilar.php"><i class="fa  fa-2x fa-user"></i>Kullanıcılar</a>
+                                </div>
+                                <div class="MenuItem5">
                                         <a href="login.PHP"><i class="fa fa-2x fa-sign-out"></i>Çıkış</a>
                                 </div>
                         </div>

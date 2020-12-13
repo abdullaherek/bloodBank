@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/headermenu.css?key=<?=time()?>">
      
-    <title>Document</title>
+    <title>menu</title>
     
 </head>
 <body>
@@ -17,18 +17,14 @@
 <a href="login.php">Giriş</a>
 
 
-<div id="menu">
-<ul>
-<li><a href="index.php">Ana Sayfa</a> </li>
-<li><a href="aboutus.php">Bağış Hakkında</a> </li>
-<li><a href="contact.php">İletişim</a> </li>
-<li><a href="#cikis">Çıkış</a> </li>
 
-       
-
-</ul>
-       
-
-    </div>
+  <div class="login-container">
+   Hoşgeldiniz!
+      <input type="text" placeholder="Kullanıcı Adınız" name="username">
+      
+   
+    
+  </div>
+</div>
 </body>
 </html>

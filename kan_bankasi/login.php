@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
 <form action="" method="POST">
     
 <div class="container"> 
@@ -52,34 +53,34 @@
 </form>
 
 </body>
+
 <?php 
 require_once "includes/pdo.php";
+
+if($_POST){
 $kullanici_adi=$_POST['kadi'];
 $kullanici_sifre=$_POST['ksifre'];
 $rol1=1;
 $rol2=0;
 
-//////////////////<-- DEGERLER GİRİLDİGTEN SONRA -->/////////////////
-if(!empty($kullanici_sifre) && !empty($kullanici_sifre) ){
     $kullanici_kontrol= $pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$kullanici_sifre' AND rol='$rol2' ")->fetch();
     $admin_kontrol=$pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$kullanici_sifre' AND rol='$rol1' ")->fetch();
     if ($kullanici_kontrol){/// roll 0 ise index sayfasına atacak////
-        echo "böyle bir kullanıcı var";
+        echo "<script type='text/javascript'>alert('Anasayfaya Yönendiriliyorsunuz')</script>";
         header("Refresh: 0; url= index.php");
     }
     else if($admin_kontrol){ ///// roll 1 ise admin sayfasına atacak//////
-        echo "bu giriş admine aittir.";
+        echo "<script type='text/javascript'>alert('Hoşgeldiniz, Sayın, $kullanici_adi Admin Sayfasına Yönendiriliyorsunuz')</script>";
         header("Refresh: 0; url= admin.php");
 
     }
-    else echo"böyle bir kayıt yok kanks";
+    else{
+        echo "<script type='text/javascript'>alert('Girmiş Olduğunuz Bilgiler Hatalıdır!')</script>";
+        header("Refresh: 0; url= login.php");
+    }
+  
 
-}////////////<--- girilen degerler boşmu kontol bitişi--->//////////
-
-else  echo "<script >alert('girilen degerler bos');</script>";
-
-
+}
 
 ?>
-
 </html>

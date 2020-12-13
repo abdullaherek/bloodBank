@@ -10,6 +10,11 @@
 </head>
 <body>
 
+<div class="topnav">
+  <a  href="index.php">Ana Sayfa</a> 
+<a href="aboutus.php">Bağış Hakkında</a> 
+<a href="contact.php">İletişim</a>
+<a href="login.php">Giriş</a>
 
 
 <div id="menu">

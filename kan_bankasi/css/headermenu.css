@@ -1,71 +1,79 @@
-ul {
-    list-style-type: none;
-   
-    list-style: none;
-    display: flex;
-    height: 20%;
-    width: 100%;
-    background-color:red;
-    margin: 0 auto;
-    text-align: center;
-    font-family:Arial, Helvetica, sans-serif ;
-    align-items: center;
-    font-weight: 500px;
-    flex-direction: row;
+* {box-sizing: border-box;}
 
 
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
 }
-ul li {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    background-color:red;
-    line-height: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-    text-decoration: none;
- 
 
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
-ul li a{
+
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+
+
+.topnav .login-container {
+  float: right;
+}
+
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width: 150px; 
+}
+
+
+.topnav .login-container s {
+  float: right;
+  padding: 6px;
+  
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  
+}
+
+.topnav .login-container button:hover {
+  background: #ccc;
+}
+
+
+@media screen and (max-width: 600px) {
+  .topnav .login-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .login-container button {
+    float: none;
     display: block;
-    color: white;
-    text-align: center;
-    padding: 30px 16px;
-    text-decoration: none;
- 
-    
-
-}
-ul li a:hover{
-    background-color: rgb(59, 58, 58);    
-    transition: 1.1s;
-    text-decoration: none;
-}
-* {
-    padding: 0;
+    text-align: left;
+    width: 100%;
     margin: 0;
-    border: 0;
-
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
 }
-
-/* @media(max-widht:500px){
-    ul
-    {
-        display: flex;
-      width: 100%;
-        flex-direction: column;
-    }
-
-} */
-
-
- 
-@media screen and (max-width: 479px) {
-	ul{
-        width: 100%;
-        flex-direction: column;
-
-        }
-	}

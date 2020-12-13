@@ -30,12 +30,12 @@ require_once "includes/pdo.php";
         
                -->
   <div class="box" id="box1">Adınız:</div>
-  <div class="box" id="box2">Soyadınız</div>
-  <div class="box" id="box3">Şehir</div>
-  <div class="box" id="box4">İlçe</div>
-  <div class="box" id="box5">Telefon Numaranız:</div>
-  <div class="box" id="box6">Kan Grubunuz</div>
-  <div class="box" id="box7">E-Mail</div>
+  <div class="box" id="box2">Soyadınız:</div>
+  <div class="box" id="box3">Şehir:</div>
+  <div class="box" id="box4">İlçe:</div>
+  <div class="box" id="box5">Tel Numaranız:</div>
+  <div class="box" id="box6">Kan Grubunuz:</div>
+  <div class="box" id="box7">E-Mail:</div>
 
             </div>      
 

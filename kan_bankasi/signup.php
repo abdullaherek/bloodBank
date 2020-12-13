@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/kan_bankasi/css/signupone.css?key=<?=time()?>">
+    <link rel="stylesheet" href="/kan_bankasi/css/signup.css?key=<?=time()?>">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
 <div class="signup_button">                                       
         <input class="btn"  type="submit"  value="Kaydol" >            
     
-        <input url="login.php" class="btn_1"  type="submit"  value="Zaten Bir Kullanıcı Hesabım Var!"> 
+        <input  class="btn_1"  type="submit"  value="Zaten Bir Kullanıcı Hesabım Var!"> 
     
 </div>                                                
                 

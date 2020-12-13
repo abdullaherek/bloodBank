@@ -8,7 +8,8 @@
 </head>
 
 <body>
-<form action="signup.php" method="POST">
+<form action="" method="POST">
+    
 <div class="container"> 
     
    <div class="txt">
@@ -49,56 +50,36 @@
           
 </div>
 </form>
-<?php /*
-$kullanici_adi = $_POST['kadi'];
-$kullanici_sifre = $_POST['ksifre'];
 
-if ($_POST){
-$server="localhost";
-$username="root";
-$password="";
-$dbname="kan_bankasi";
-
-if( !empty($kullanici_adi) && !empty($kullanici_sifre) ){
- $baglan = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
- if($baglan){
-    $kullanici_kontrol= $baglan->query("SELECT * FROM login_table WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$kullanici_sifre'")->fetch();
-    if($kullanici_kontrol){
-$mesaj="Kullanıcı Bilgileriniz Doğrudur Giriş Yapmak için Tamam Butonuna tıklamanız yeterlidir";
-echo"kontrol edildi var";
-$baglan=null;
-header("Refresh: 0; url=index.php");///////////////// bi doğrulama mesajından sonra ANASAYFAYA GİRECEK/////////
-echo "<script type='text/javascript'>alert('$mesaj')</script>";
-    }
-
-    else {
-        header("Refresh: 0; url=login.PHP");
-		$message="Bilgilerinizi Hatalı Girdiniz";
-		echo "<script type='text/javascript'>alert('$message');</script>";
-		$baglan=null;
-		}
-    }
-}
- 
-}
-
- 
- 
-
- 
-////// VERİ BAĞLANTISI KURULUMU + KONTROL /////
-/*try{
-$server="localhost";
-$username="root";
-$password="";
-$dbname="kan_bankasi";
-
-$conn = new PDO("mysql:host=$server;dbname=$dbname",$username,$password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-echo "Bağlandı";
-} catch(PDOException $e) {
-echo "Bağlanamadı " . $e->getMessage();
-}*/
-?>
 </body>
+<?php 
+require_once "includes/pdo.php";
+$kullanici_adi=$_POST['kadi'];
+$kullanici_sifre=$_POST['ksifre'];
+$rol1=1;
+$rol2=0;
+
+//////////////////<-- DEGERLER GİRİLDİGTEN SONRA -->/////////////////
+if(!empty($kullanici_sifre) && !empty($kullanici_sifre) ){
+    $kullanici_kontrol= $pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$kullanici_sifre' AND rol='$rol2' ")->fetch();
+    $admin_kontrol=$pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$kullanici_sifre' AND rol='$rol1' ")->fetch();
+    if ($kullanici_kontrol){/// roll 0 ise index sayfasına atacak////
+        echo "böyle bir kullanıcı var";
+        header("Refresh: 0; url= index.php");
+    }
+    else if($admin_kontrol){ ///// roll 1 ise admin sayfasına atacak//////
+        echo "bu giriş admine aittir.";
+        header("Refresh: 0; url= admin.php");
+
+    }
+    else echo"böyle bir kayıt yok kanks";
+
+}////////////<--- girilen degerler boşmu kontol bitişi--->//////////
+
+else  echo "<script >alert('girilen degerler bos');</script>";
+
+
+
+?>
+
 </html>

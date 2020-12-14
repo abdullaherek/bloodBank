@@ -12,7 +12,7 @@ body
     background: #ffffff;
 
    
-  
+    background-image:url(../images/styl.jpg);
    
 }
 
@@ -27,7 +27,7 @@ body
     justify-content: center;
 
 
-    background-image: radial-gradient(circle farthest-side, #b9a73c, #76ffff);  
+
 }
 
 .kaplayan_alan{ 

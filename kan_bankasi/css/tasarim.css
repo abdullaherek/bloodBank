@@ -15,7 +15,7 @@ body
   border: 0;
     background: #ffffff;
     font-family: sans-serif;
- background-image:url(../images/index2.jpg);
+ background-image:url(../images/River.jpg);
     background-size:cover;
     background-position: center center;
     background-attachment: fixed;
@@ -66,7 +66,7 @@ body
   width:auto;
 
 
-  background-color:#a200ff;
+  background-color:#000000;
   margin:0 auto;
   float:left;
   font-size:2.5rem;
@@ -168,14 +168,15 @@ body
 .button1{
 display:inline-block;
 padding:0.35em 1.2em;
-border:0.1em solid #554747;
+border:0.1em solid #bdb7b7;
 margin:0 0.3em 0.3em 0;
 border-radius:0.12em;
 box-sizing: border-box;
 text-decoration:none;
 font-family:'Roboto',sans-serif;
+background-color: rgb(166, 255, 0);
 font-weight:300;
-color:#ff0000;
+color:#ff1515;
 text-align:center;
 transition: all 0.2s;
   }
@@ -194,7 +195,7 @@ margin:0.4em auto;
  
  
 .bouncy{
-animation:bouncy 1s infinite linear;
+animation:bouncy 4s infinite linear;
 position:relative;
   }
   

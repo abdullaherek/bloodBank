@@ -31,10 +31,10 @@
         <div class="butonlar">
    
 
-<a href="main.php" class="button1 bouncy"><span style="font-size:3em; font-family:'Comic Sans MS'; border-right:1px solid rgba(255,255,255,0.5); padding-right:0.3em; margin-right:0.3em; vertical-align:middle">J</span>
- Login with your SJWhub account</a>
-<a href="searchpage.php" class="button1 bouncy" style="animation-delay:0.07s" ><span style="font-size:3em; font-family:'Comic Sans MS'; border-right:1px solid rgba(255,255,255,0.5); padding-right:0.3em; margin-right:0.3em; vertical-align:middle">J</span>
- Login with your SJWhub account
+<a href="main.php" class="button1 bouncy"><span style="font-size:3em; font-family:'Comic Sans MS'; border-right:1px solid rgba(255,255,255,0.5); padding-right:0.3em; margin-right:0.3em; vertical-align:middle">K</span>
+ Kan Bağışlamak İstiyorum</a>
+<a href="searchpage.php" class="button1 bouncy" style="animation-delay:0.07s" ><span style="font-size:3em; font-family:'Comic Sans MS'; border-right:1px solid rgba(255,255,255,0.5); padding-right:0.3em; margin-right:0.3em; vertical-align:middle">K</span>
+ Kan Arıyorum
 </a>
 
 

@@ -44,7 +44,9 @@ require_once "includes/pdo.php";
 
             <div class="textler"  >
                     <input id="box1"  type="text" name="ad"  />
+
                          <input id="box2" type="text" name="soyad" />
+
                           <select  name="sehir" class="sehir">
                           <?php
                                 $sehir_stmt = $pdo->query("SELECT * FROM il");
@@ -54,7 +56,6 @@ require_once "includes/pdo.php";
                                     $ilceID = $sehir_row['ilceID'];
                                     echo '<option value = '.$ilceID.'> '.$sehirler.' </option>';
                                 }
-
                         ?>
                       </select>
 

@@ -41,8 +41,8 @@ session_start();
 
 <div class="login_button">        
         <input  class="btn"  type="submit"  value="Giriş" >                       
-        <input class="btn_1"  type="submit"   value="Kaydol" >                     
-        <input class="btn_2"  type="submit"  value="Şifreni mi unuttun?" >   
+        <input class="btn_1"  type="button"   onclick="window.location.href='/kan_bankasi/signup.php'" value="Kaydol" >                     
+        
 </div>                                                
                     
                           

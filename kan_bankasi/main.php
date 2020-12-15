@@ -1,6 +1,12 @@
 <?php 
 require_once "includes/pdo.php";
+include_once('content/headerMenu.php');
+if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
+ header("Refresh: 0; url= login.php");;}
 
+ else{
+    header("Refresh: 9999999999; url= main.php");
+ }
 ?>
              
 
@@ -9,6 +15,16 @@ require_once "includes/pdo.php";
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/style.css?key=<?=time()?>">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("select.country").change(function(){
+        var selectedCountry = $(this).children("option:selected").val();
+       
+
+    });
+});
+</script>
 </head>
 <body>
     
@@ -47,14 +63,14 @@ require_once "includes/pdo.php";
 
                          <input id="box2" type="text" name="soyad" />
 
-                          <select  name="sehir" class="sehir">
+                          <select  name="sehir" class="country">
                           <?php
                                 $sehir_stmt = $pdo->query("SELECT * FROM il");
                                 while($sehir_row = $sehir_stmt->fetch(PDO :: FETCH_ASSOC))
                                  {                          
                                     $sehirler = $sehir_row['sehirler'];
-                                    $ilceID = $sehir_row['ilceID'];
-                                    echo '<option value = '.$ilceID.'> '.$sehirler.' </option>';
+                                    $sehirID = $sehir_row['ilID'];
+                                    echo '<option value = '.$sehirID.'> '.$sehirler.' </option>';
                                 }
                         ?>
                       </select>
@@ -62,11 +78,14 @@ require_once "includes/pdo.php";
                           <select id="box4" name="ilce" class="ilce">
                                 
                           <?php
+                           
+                       
                                 $ilceninID = $_POST['sehir'];
-                                $ilce_stmt = $pdo->query("SELECT * FROM ilce where ilceID = '$ilceninID'");
+                                $ilce_stmt = $pdo->query("SELECT * FROM ilce where ilID = '$secilenIl'");
                                 while($ilce_row = $ilce_stmt->fetch(PDO :: FETCH_ASSOC))
                                  {                          
                                     $ilceler = $ilce_row['isim'];
+
                                     echo '<option value = '.$ilceler.'> '.$ilceler.' </option>';
                                 }
 

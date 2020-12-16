@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 16 Ara 2020, 13:04:03
--- Sunucu sürümü: 10.4.14-MariaDB
--- PHP Sürümü: 7.2.34
+-- Üretim Zamanı: 16 Ara 2020, 23:15:13
+-- Sunucu sürümü: 10.4.11-MariaDB
+-- PHP Sürümü: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,9 +33,17 @@ CREATE TABLE `bagislayan_bilgi` (
   `soyad` varchar(105) NOT NULL,
   `ilID` int(11) NOT NULL,
   `ilceID` int(11) NOT NULL,
+  `tel_no` varchar(11) NOT NULL,
   `kan_gruplariID` int(11) NOT NULL,
   `kayit_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Tablo döküm verisi `bagislayan_bilgi`
+--
+
+INSERT INTO `bagislayan_bilgi` (`bagislayan_id`, `ad`, `soyad`, `ilID`, `ilceID`, `tel_no`, `kan_gruplariID`, `kayit_id`) VALUES
+(1, 'Berke', '&Ouml;zbek', 2, 387, '12312312312', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -1200,7 +1208,8 @@ CREATE TABLE `kayit` (
 
 INSERT INTO `kayit` (`kayit_id`, `kullanici_adi`, `kullanici_sifre`, `rol`, `email`) VALUES
 (1, 'admin', 's%3A32%3A%22eJwrT%2FeuKE0JsUiNdA8LLTewBQAzCAWb%22%3B', 1, 'baranbsbykk@gmail.com'),
-(2, 'deneme1', 's%3A28%3A%22eJyrcEwsKUtJc08xTXUDAB3HBFo%3D%22%3B', 0, 'deneme@gmail.com');
+(2, 'deneme1', 's%3A28%3A%22eJyrcEwsKUtJc08xTXUDAB3HBFo%3D%22%3B', 0, 'deneme@gmail.com'),
+(3, 'brkeozbk', 's%3A24%3A%22eJzLDvMoN%2FfUDgMADCACgg%3D%3D%22%3B', 0, 'brkeozbk@gmail.com');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -1265,7 +1274,7 @@ ALTER TABLE `kayit`
 -- Tablo için AUTO_INCREMENT değeri `bagislayan_bilgi`
 --
 ALTER TABLE `bagislayan_bilgi`
-  MODIFY `bagislayan_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `bagislayan_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `ihtiyac_bilgi`
@@ -1283,7 +1292,7 @@ ALTER TABLE `iletisim`
 -- Tablo için AUTO_INCREMENT değeri `kayit`
 --
 ALTER TABLE `kayit`
-  MODIFY `kayit_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kayit_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar

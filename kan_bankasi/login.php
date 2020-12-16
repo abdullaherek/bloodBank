@@ -85,7 +85,8 @@ $rol2=0;
     $admin_kontrol=$pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$hashing_sifre' AND rol='$rol1' ")->fetch();
     if ($kullanici_kontrol){/// roll 0 ise index sayfasına atacak////
 	
-	$_SESSION["isim"] = $kullanici_kontrol['kullanici_adi'];
+    $_SESSION["isim"] = $kullanici_kontrol['kullanici_adi'];
+    $_SESSION["kayitID"] = $kullanici_kontrol['kayit_id'];
         // echo "<script type='text/javascript'>alert('Anasayfaya Yönendiriliyorsunuz')</script>";
          header("Refresh: 0; url= index.php");
 	

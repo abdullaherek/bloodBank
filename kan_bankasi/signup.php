@@ -27,17 +27,17 @@
         
     <div class="signup_inputs">
         <div class="user_id">
-            <input  type="text" autocomplete="off"  placeholder="Kullanıcı Adı" name="kadi" value="">
+            <input  type="text" autocomplete="off" pattern="[a-zA-Z<?=$trChars?>\s.]*"  required autofocus oninvalid="alert('Kullanıcı Adını Girmeniz Zorunludur!')" placeholder="Kullanıcı Adı" name="kadi" value="">
         </div>
         <div class="mail_id">
-            <input  type="text" autocomplete="off"  placeholder="E-mail" name="mail" value="">
+            <input  type="text" autocomplete="off"  required autofocus oninvalid="alert('E-mail Girmeniz Zorunludur!')" placeholder="E-mail" name="mail" value="">
         </div>
                         
         <div class="user_passwd">
-            <input type="password"  placeholder="Şifre" name="ksifre" value="">
+            <input type="password"  placeholder="Şifre"  required autofocus oninvalid="alert('Şifre Alanını Girmeniz Zorunludur!')" name="ksifre" value="">
         </div>
         <div class="user_passwd_again">
-            <input type="password"  placeholder="Şifre Tekrarı" name="ksifretkrar" value="">
+            <input type="password"  placeholder="Şifre Tekrarı"   required autofocus oninvalid="alert('Şifre Tekrarını Girmeniz Zorunludur.')" name="ksifretkrar" value="">
         </div>
     </div>
 
@@ -56,10 +56,12 @@
 </div>
 </form>
 <?php 
+require_once "includes/pdo.php";
 
-$rol=0;
 $mail_kontrol;
+$kullanici_adi;
 $kullanici_info;
+$hashing_sifre;
 if($_POST){
     
 $kullanici_adi = htmlentities(trim($_POST['kadi']));
@@ -85,8 +87,48 @@ $kullanici_email=htmlentities(trim($_POST['mail']));
         else if($sifre_array>=6){
             // <<<<--------- MAİL KONTROL BAŞLANGIÇI OLACAK BUDA -------->>>>>
             if (filter_var($kullanici_email, FILTER_VALIDATE_EMAIL)) {
-               // <------------BU ALAN PASSWORD HASHİNG VE VERİ TABANINA KAYDETME ALANIDIR---------------->
-              } else {
+             // $kullanici_info=$pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' AND kullanici_sifre='$kullanici_sifre'  ")->fetch();
+               // <------------BU ALAN PASSWORD HASHİNG VE VERİ TABANINA KAYDETME ALANIDIR---------------->         
+                               
+                function encrypt_decrypt($action, $kullanici_sifre) {
+	              $output = true;
+	              $sifreleme_kodlari = 'AES-256-CTR'; 
+	              $sifreleme_key = '25760'; 
+	              $sifre_baslangici = '**109'; 
+	              $key = hash('sha256', $sifreleme_key); 
+	              $key_substr = substr(hash('sha256', $sifre_baslangici), 0, 16); 
+	              if( $action == 'encrypt' ) {
+		            $output = urlencode(serialize(base64_encode(gzcompress(openssl_encrypt($kullanici_sifre,$sifreleme_kodlari, $key, 0, $key_substr)))));
+	              }	             
+	              return $output;
+                }           
+                $hashing_sifre = encrypt_decrypt('encrypt',$kullanici_sifre); 
+                // <-----------------BU ALAN PASSWORD HASHİNG BİTME ALANIDIR------------------------> 
+                $kullanici_info=$pdo->query("SELECT * FROM kayit WHERE kullanici_adi='$kullanici_adi' ")->fetch();
+                $mail_kontrol=$pdo->query("SELECT * FROM kayit WHERE email='$kullanici_email' ")->fetch();
+                if($kullanici_info){  
+                  echo"<script type='text/javascript'>alert('Girmiş Olduğunuz Kullanıcı Adı Zaten Kayıtlıdır!')</script>";    
+                }
+                else if($mail_kontrol==0){
+                  try{
+                  $sql=("INSERT INTO `kayit` (`kayit_id`, `kullanici_adi`, `kullanici_sifre`, `rol`, `email`) VALUES (NULL, '$kullanici_adi', '$hashing_sifre', '0', '$kullanici_email')");
+                  $pdo->exec($sql);
+                  echo "<script type='text/javascript'>alert('Başarıyla Kayıt Oldunuz,Giriş Sayfasına Yönlendiriliyorsunuz...')</script>";
+                  header("Refresh: 0; url= login.php");
+                  }
+                  catch(PDOException $e) {
+                    echo"<script type='text/javascript'>alert('Kayit İşleminiZ Gerçekleşememiştir Lütfen Bilgilerinizi Tekrar Giriniz!')</script>";
+                    }
+                }
+                else {
+                  echo"<script type='text/javascript'>alert('Böyle Bir $kullanici_email  E-mail Adresi Zaten Kayıtlıdır!')</script>";
+                }
+                
+              //<<<<<<<<<<<<<<<------------------------VERİ TABANINA KAYDETME BİTİŞ---------------------------------->>>>>>>>>>>>>>><             
+
+               
+              } 
+                else {
                 echo "<script type='text/javascript'>alert('Kullanmış Olduğunuz $kullanici_email E-mail Adresi Geçerli Değildir');</script>"; 
               } 
         }
@@ -95,9 +137,7 @@ $kullanici_email=htmlentities(trim($_POST['mail']));
         echo "<script type='text/javascript'>alert('Şifreleriniz Birbiri İle Uyuşmamaktadır! Lütfen Aynı Olduğundan Emin Olunuz!');</script>";
       }   
    }
-   else if(empty($kullanici_adi) || empty($kullanici_email) || empty($kullanici_sifre) || empty($kullanici_sifre_tekrar)  ) {
-    echo "<script type='text/javascript'>alert('Lütfen Gerekli Yerlerin Dolu Olduğundan Emin Olunuz');</script>";
-  }
+ 
    
 }
 

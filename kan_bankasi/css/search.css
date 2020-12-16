@@ -1,125 +1,86 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-    text-decoration: none;
-    
-    
+* {
+    margin: 0; 
+    padding: 0;
+    text-decoration:none;
+    box-sizing:border-box;
+}
+body{
+     height: 100%;
+}
+
+.kanAramaContainer{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: rows;
+
 }
 
 
-.KanAramaContainer{
-    width: 100vh;
-    height: 72vh;
+.textler{
     display: flex;
- 
-    background-color: rgb(255, 255, 255);
-}
-
-.KanAramaText{
-    width: 15%;
-    height: 100%;
-    display: flex;
-    background-color: rgb(255, 255, 255);
     flex-direction: column;
-}
-
-.KanAramaCombobox{
     width: 25%;
-    height: 100%;
+    height: 80%;
+    background-color: rgb(255, 255, 255);
+}
+.txt{
     display: flex;
+    margin-top: 3rem;
+    color: rgb(24, 23, 23);
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
+.comboboxlar{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 80%;
+    background-color: rgb(255, 255, 255);
+}
+
+.sehir{
+    display:flex;
+    width: 80%;
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+.ilce{
+    display:flex;
+    width: 80%;
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+.kanGrubu{
+    display:flex;
+    width: 80%;
+    margin-top: 3rem;
+    font-size: 2rem; 
+}
+.btn{
+    justify-content: center;
+    display: flex;
+    width: 30%;
+    height: 8%;
+    margin-top: 2rem;
+    margin-left: 20%;
+   
+}
+
+.icerik{
+    display: flex;
+    width: 50%;
+    height: 80%;
     background-color: rgb(255, 255, 255);
     flex-direction: column;
-
+    
 }
 
-.KanAramaİcerik{
-    width: 60%;
-    height: 100%;
+
+.metin{
     display: flex;
-    
+    font-size: 1.3rem;
+    color: rgb(17, 17, 16);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-.Text{
-    width: 100%;
-    margin-bottom:6rem;
-    font-size:1.4rem;
-    font-weight: 1rem;
-    margin-left: 5%;
-    margin-top: 10%;
-    
-}
-
-.combobox{
-    width: 70%;
-    margin-bottom:4.5rem;
-    font-size:1.2rem;
-    font-weight: 0.3rem;
-    margin-left: 5%;
-    margin-top: 5%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    
-    
-    
-
-}
-
-.kanAramaP{
-    font-size: 1rem; 
-color: white;
-   font-style: oblique;
-     letter-spacing: 0.1rem;
-    
-}
-
-.button{
-    width: 10rem;
-    height: 3rem;
-    border-radius: 5px solid grey;
-    font-size:1.25rem;
-    color:#000;
-    margin-left: 2%;
-    background: transparent;
-}
-
-.button:hover{
-    background-color: #da2121;
-    transition-duration: 0.5s;
-    color:#fff;
-}
-
-@media (max-width:560px){
-
-.kanAramaP{
-   visibility: hidden; 
-}
-.KanAramaText{
-    width: 60vh;
-}
-.KanAramaCombobox{
-    width: 100%;
-}
-.Text{
-    width:8rem ;
-    margin-bottom: 8rem;
-
-}
-.combobox{
-    margin-left: 2rem;
-    margin-bottom: 7rem;
-    width: 10rem;
-}
-.button{
-    width: 40%;
-    
-}
-.KanAramaİcerik h1{
-    display: none;
-
-}
-}
-
-

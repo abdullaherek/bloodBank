@@ -1,11 +1,14 @@
 body {
-    font-family: 'Roboto';font-size: 16px;
+    font-family: 'Roboto';
+    font-size: 2rem;
+    background: #a6deee;
 }
 
 
 
 .aboutus-section {
     padding: 90px 0;
+
 }
 .aboutus-title {
     font-size: 30px;
@@ -16,6 +19,7 @@ body {
     position: relative;
     text-transform: uppercase;
     color: #000;
+    
 }
 .aboutus-title::after {
     background: #fdb801 none repeat scroll 0 0;

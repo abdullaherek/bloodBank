@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="conandabaout.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="css/contact.css?key=<?=time()?>">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    
     <title>Document</title>
     <style>
     
-    .container{
-      margin-top:10%;
-    }
+    
     </style>
 </head>
 <body>
@@ -25,7 +24,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="contact-info">
-                    <img src="images/indir.jpg" alt="image"/>
+                    <img class="img" src="images/indir.jpg" alt="image"/>
                     <h2 class="iletisime_gec">Bizimle İletişime Geçin</h2>
                     <h4></h4>
                 </div>

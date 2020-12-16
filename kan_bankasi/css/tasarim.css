@@ -13,9 +13,9 @@ body
   padding: 0;
   margin: 0;
   border: 0;
-    background: #ffffff;
+    background: #a6deee;
     font-family: sans-serif;
- background-image:url(../images/River.jpg);
+
     background-size:cover;
     background-position: center center;
     background-attachment: fixed;
@@ -166,6 +166,8 @@ body
     
  }
 .button1{
+  height: 150px;
+  width: 400px;
 display:inline-block;
 padding:0.35em 1.2em;
 border:0.1em solid #bdb7b7;
@@ -174,12 +176,12 @@ border-radius:0.12em;
 box-sizing: border-box;
 text-decoration:none;
 font-family:'Roboto',sans-serif;
-background-color: rgb(166, 255, 0);
-font-weight:300;
+background-color: rgb(255, 255, 255);
+font-weight:400;
 color:#ff1515;
 text-align:center;
 transition: all 0.2s;
-  }
+ }
 .button1:hover{
 color:#000000;
 background-color:#FFFFFF;
@@ -188,6 +190,7 @@ background-color:#FFFFFF;
 a.button1{
 display:block;
 margin:0.4em auto;
+align-items: center;
 }
 }
 

@@ -30,8 +30,10 @@ if(!isset($_SESSION["isim"])){
                                 			
                          }else{
 							 echo '<a id="main" href ="logout.php">Çıkış Yap</a></li>';
-                             echo  '<p class = "girenKullanici">' .$_SESSION["isim"]. '</p>' ;	
-							 }
+                             echo  '<p class = "girenKullanici">'.$_SESSION["isim"]. '</p>' ;	
+                            // echo  '<p class = "girenKullanici">' .$_SESSION["kayitID"]. '</p>' ;	
+                             }
+                             
  ?>
 
 

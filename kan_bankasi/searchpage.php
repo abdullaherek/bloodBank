@@ -23,18 +23,43 @@ if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Önc
 <?php include_once('content/headerMenu.php');?>
     
 
-<form method="POST" action="searchpage_list.php">
-<div class="kanAramaContainer" >
-    <div class="textler" style="background-image: url(images/kan1.jpg)">
-        <p class="txt"> İl Seçiniz:</p>
-        <p class="txt"> İlçe Seçiniz:</p>
-        <p class="txt"> Kan Grubu Seçiniz:</p>
+<?php include_once('content/headerMenu.php');?>
+<form action="" method="POST">
 
-    </div>
-    <div class="comboboxlar"  style="background-image: url(images/kan1.jpg)">
-        <select name="sehir" class="sehir">
-            <option value="0">Bir Şehir Seçiniz  </option>
- <?php
+<div class="container">
+    <div class="kaplayan_alan" >
+        <div class="bagislayan_bilgi">
+            <!-- <div class="fontlar" > -->
+<!-- 
+              <h1>Adınız:</h1>
+              <h1>Soyadınız:</h1>
+              <h1>Şehir:</h1>
+              <h1>İlçe:</h1>
+              <h1>Tel No:</h1>
+              <h1>Kan Grubu:</h1>
+              <h1>E-Mail:</h1>
+        
+               -->
+  <!-- <div class="box" id="box1">Adınız:</div>
+  <div class="box" id="box2">Soyadınız:</div>
+  <div class="box" id="box3">Şehir:</div>
+  <div class="box" id="box4">İlçe:</div>
+  <div class="box" id="box5">Tel Numaranız:</div>
+  <div class="box" id="box6">Kan Grubunuz:</div>
+  
+
+            </div>       -->
+
+
+ 
+
+            <div class="textler"  >
+                    
+                        
+
+                          <select id="sehirler" name ="ilID" >
+                          <option value="">Bir Şehir Seçiniz</option>
+                          <?php
                                 $sehir_stmt = $pdo->query("SELECT * FROM il");
                                 while($sehir_row = $sehir_stmt->fetch(PDO :: FETCH_ASSOC))
                                  {                          
@@ -43,15 +68,17 @@ if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Önc
                                     echo '<option value = '.$sehirID.'> '.$sehirler.' </option>';
                                 }
                         ?>
-        </select>
+                      </select>
 
-        <select name="ilce "class="ilce">
-            <option value="ilce">  </option>
-        </select>
+                          <select id="ilceler" name="ilceID" >
+                          <option value="">Bir İlçe Seçiniz</option>
+                         </select>
 
-        <select name="kanGrubu"class="kanGrubu">
-            <option value="kangrubu">Bir Kan Grubu Seçiniz  </option>
-            <?php
+                                 
+
+                             <select id="box6" name="kan_gruplariID" class="kan_grubu">
+                             <option value="">Kan Grubunuzu Seçiniz</option>
+                             <?php
                                 $kan_stmt = $pdo->query("SELECT * FROM kan_gruplari");
                                 while($kan_row = $kan_stmt->fetch(PDO :: FETCH_ASSOC))
                                  {                          
@@ -61,50 +88,33 @@ if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Önc
                                 }
 
                         ?>
-        </select>
+
+                         </select>
+
+                         
+            </div>
+        </div>
+                
+        <a class="button" href="searchpage_list.php">Ara</a> 
         
-        
-        <input type="submit" class="btn" value="Ara">
+        <a class="button" href="bagisisteyen.php">Veya İstek Oluşturun</a>
+               
+    </div>
+</div>
+
+
+
+
+
+
+       
+
+
         
       
-
-    </div>
-    <div class="icerik"  style="background-image: url(images/kan1.jpg)">
-        <h1> &nbsp&nbsp&nbspKan Bağışı Hayat Kurtarır</h1>
-        <p class="metin"> &nbsp &nbsp Dünya Sağlık Örgütü’nün raporuna
-             göre en güvenilir kan; kişinin kendi özgür
-              iradesiyle, hiçbir karşılık beklemeksizin,
-               gönüllü, düzenli ve bilinçli olarak verdiği
-                kandır.
-Tıptaki gelişmelere rağmen kanın yerini tutacak, alternatif 
-bir tedavinin olmamasının, düzenli kan bağışı yapmayı ne 
-derece önemli bir ihtiyaç haline getirdiğine dikkat çeken 
-Hisar Intercontinental Hospital Klinik Laboratuvarlar Bölüm Başkanı Prof. Dr.
- Bekir Sami Uyanık’la Kızılay Haftası’nda kan bağışının önemini konuştuk.
-  Dünyada gelişmiş ülkelerde gönüllü kan bağışının nüfusa oranının %5’e yaklaşırken,
-   ülkemizde ancak bunun yarısı kadar olduğunu dile getiren Prof. Dr. Uyanık; ‘Güvenli gönüllü
-    kan bağışlarının yetersiz olması nedeniyle, kan ve kan ürünleri ihtiyacı, hasta yakınları tarafından 
-    kana kan ve bir takım zorunlu yöntemlerle karşılanır. Dolayısıyla “bugün sana, yarın bana ve herkesin kana
-     ihtiyacı olacağı bir günün geleceği” düşüncesiyle düzenli kan bağışı kültürünün yerleşmesi gerekir’ açıklamasında bulundu.
-Ülkemizde kan ihtiyacı 2.500.000 ünite kan bağışı ile
- karşılanabilecek iken, 2014 yılında toplam 1 milyon 
- 860 bin 225 ünite kan bağışı olmuştur. Kadınların kan 
- bağışı oranı artmakla birlikte, bağış yapanların % 88’i
-  erkekler iken, %12’si kadınlardır. Oysa 18-65 yaş
-   aralığında ve 50 kg üzerinde olan herkes, önemli
-    bir sağlık sorunu yoksa yılda dört kez kan bağışı
-     yapabilir. 1 ünite, yani bir torba kan, ortalama
-      450 ml’dir. İnsan vücudunda yaklaşık 6000 mL kan
-       olduğunu göz önüne alınırsa, bu kadar kan vermek
-        herhangi bir risk oluşturmaz.</p>
-        <div>
-
-</div>
-</form>
-
 <script>
       $(document).ready(function() {
-    $('.sehir').on('change', function() {
+    $('#sehirler').on('change', function() {
         var country_id = this.value;
         $.ajax({
             url: "includes/post.php",
@@ -114,7 +124,7 @@ Hisar Intercontinental Hospital Klinik Laboratuvarlar Bölüm Başkanı Prof. Dr
             },
             cache: false,
             success: function(ilce_stmt) {
-                $(".ilce").html(ilce_stmt);
+                $("#ilceler").html(ilce_stmt);
                
             }
         });
@@ -122,7 +132,6 @@ Hisar Intercontinental Hospital Klinik Laboratuvarlar Bölüm Başkanı Prof. Dr
  
 });
       </script>
-
 
 </body>
 </html>

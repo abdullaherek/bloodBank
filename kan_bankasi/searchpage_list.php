@@ -9,10 +9,11 @@
     <title>Bulunan Kanlar</title>
 </head>
 <body>
-    <form method="POST">
 <?php
  include_once 'content\headerMenu.php';
 ?>
+    <form method="POST">
+
     <div class="table">
     <table class="table table-dark table-striped">
                                         <thead>

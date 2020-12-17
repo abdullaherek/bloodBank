@@ -1,12 +1,4 @@
-<?php
-if(!isset($_SESSION["isim"])){ // echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
-        header("Refresh: 0; url= login.php");;
-}
-       
-        else{
-           header("Refresh: 9999999999; url= admin.php");
-        }
-       ?>
+
      
 <!DOCTYPE html>
 <html lang="en">

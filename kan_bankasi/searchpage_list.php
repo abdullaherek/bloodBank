@@ -12,7 +12,7 @@
 <?php
  include_once 'content\headerMenu.php';
 ?>
-    <form method="POST">
+  
 
     <div class="table">
     <table class="table table-dark table-striped">
@@ -20,23 +20,82 @@
                                           <tr>
                                             <th>Ad</th>
                                             <th>Soyad</th>
-                                            <th>Mail</th>
+                                            <th>İl</th>
+                                            <th>İlçe</th>
+                                            <th>Tel No</th>
+                                            <th>Kan</th>
+                                            <th>Email</th>
+                                            
                                           </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>John</td>
-                                            <td>Doe</td>
-                                            <td>john@example.com</td>
-                                            </tr>
+                                        
                                            
+                                        <?php
+$bagislayan_stmt = $pdo->query("SELECT * FROM bagislayan_bilgi");
+while($bagislayan_row = $bagislayan_stmt->fetch(PDO :: FETCH_ASSOC))
+  {                          
+    $ad = $bagislayan_row['ad'];
+    $soyad = $bagislayan_row['soyad'];
+    $ilID = $bagislayan_row['ilID'];
+    $ilceID = $bagislayan_row['ilceID'];
+    $tel_no = $bagislayan_row['tel_no'];
+    $kan_gruplariID = $bagislayan_row['kan_gruplariID'];
+    $kayit = $bagislayan_row['kayit_id'];
+  
+    $bagislayan_il_stmt = $pdo->query("SELECT * FROM il where ilID='$ilID'");
+     while($bagislayan_il_row = $bagislayan_il_stmt->fetch(PDO :: FETCH_ASSOC))
+     {  
 
+      $il = $bagislayan_il_row['sehirler'];
+       
+
+     }
+
+     $bagislayan_ilce_stmt = $pdo->query("SELECT * FROM ilce where ilceID='$ilceID'");
+     while($bagislayan_ilce_row = $bagislayan_ilce_stmt->fetch(PDO :: FETCH_ASSOC))
+     {  
+
+      $ilce = $bagislayan_ilce_row['isim'];
+       
+
+     }
+
+     $bagislayan_kan_stmt = $pdo->query("SELECT * FROM kan_gruplari where kan_gruplariID=' $kan_gruplariID'");
+     while($bagislayan_kan_row = $bagislayan_kan_stmt->fetch(PDO :: FETCH_ASSOC))
+     {  
+
+      $kan = $bagislayan_kan_row['kan_gruplari'];
+       
+
+     }
+
+     $bagislayan_email_stmt = $pdo->query("SELECT * FROM kayit where kayit_id =' $kayit'");
+     while($bagislayan_email_row = $bagislayan_email_stmt->fetch(PDO :: FETCH_ASSOC))
+     {  
+
+      $email = $bagislayan_email_row['email'];
+       
+
+     }
+
+     echo ' <tr>';
+                                                   echo ' <td>'.$ad.'</td>';
+                                                   echo ' <td>'.$soyad.'</td>';
+                                                   echo '<td>'.$il.'</td>';
+                                                   echo '<td>'.$ilce.'</td>';
+                                                   echo '<td>'.$tel_no.'</td>';
+                                                   echo '<td>'.$kan.'</td>';
+                                                   echo '<td>'.$email.'</td>'; 
+                                                   echo '</tr>';
+                                                  }
+?>
     </div>
 
 
 
 
 
-    </form>
+
 </body>
 </html>

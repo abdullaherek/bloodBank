@@ -1,13 +1,13 @@
-<?php 
-      require_once "includes/pdo.php";      
-      if(!isset($_SESSION["isim"])){ // echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
-        header("Refresh: 0; url= login.php");;
-}
+<?php
+session_start();
+require_once "includes/pdo.php";
+if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
+        header("Refresh: 0; url= login.php");;}
        
         else{
            header("Refresh: 9999999999; url= admin.php");
         }
-      ?>
+       ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +42,7 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                 <?php
-                                                 $kullanici_sifre="s%3A32%3A%22eJwrT%2FeuKE0JsUiNdA8LLTewBQAzCAWb%22%3B";
+                                                 <?php                                                
                                                  $unhashing_sifre;
                                                  function encrypt_decrypt($action, $kullanici_sifre) {
                                                      $output = true;
@@ -75,8 +74,7 @@
                                                    echo '<td>'.$kullanici_rol.'</td>';
                                                    echo '<td>'.$unhashing_sifre.'</td>';                                                                       
                                                    echo ' <td><input type="submit" class="silButton" value="Sil"></td>';
-                                                   echo ' <td><input type="submit" class="aktifPasifButton" value="Aktif"> </td>';
-                                                   echo '<td><input type="submit" class="duzenleButton" value="Düzenle"> </td>';
+                                                   echo '<td><input type="submit" class="duzenleButton" value="Rol Seç"> </td>';
                                                    echo '</tr>';
                                                   }
                                                   

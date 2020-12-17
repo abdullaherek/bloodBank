@@ -30,7 +30,7 @@
                                         <a href="AdminKullanicilar.php"><i class="fa  fa-2x fa-user"></i>Kullanıcılar</a>
                                 </div>
                                 <div class="MenuItem5">
-                                        <a href="login.PHP"><i class="fa fa-2x fa-sign-out"></i>Çıkış</a>
+                                        <a href="logout.php"><i class="fa fa-2x fa-sign-out"></i>Çıkış</a>
                                 </div>
                         </div>
 

@@ -92,6 +92,7 @@ $rol2=0;
 	
     }
     else if($admin_kontrol){ ///// roll 1 ise admin sayfasına atacak//////
+        $_SESSION["admin"] = $admin_kontrol['kullanici_adi'];
         echo "<script type='text/javascript'>alert('Hoşgeldiniz, Sayın, $kullanici_adi Admin Sayfasına Yönendiriliyorsunuz')</script>";
         header("Refresh: 0; url= admin.php");
 

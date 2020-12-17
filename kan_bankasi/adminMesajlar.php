@@ -1,15 +1,13 @@
-<?php 
-      require_once "includes/pdo.php";
-      if(!isset($_SESSION["isim"])){ // echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
-        header("Refresh: 0; url= login.php");;
-}
+<?php
+session_start();
+require_once "includes/pdo.php";
+if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
+        header("Refresh: 0; url= login.php");;}
        
         else{
            header("Refresh: 9999999999; url= admin.php");
         }
-      
-            
-      ?>
+       ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,9 +37,7 @@
                                                     <th>Ad</th>
                                                     <th>Soyad</th>
                                                     <th>Mail</th>
-                                                    <th>Mesaj</th>
-                                                    <th>Sil</th>
-                                                    <th>Düzenle</th>
+                                                    <th>Mesaj</th>                                                   
                                                     
                                                   </tr>
                                                 </thead>
@@ -56,16 +52,14 @@
                                                     $email = $mesajlar_row['email'];
                                                     $mesaj = $mesajlar_row['mesaj'];
                                                     
+                                                    
 
                                                    echo ' <tr>';
                                                    echo ' <td>'.$ad.'</td>';
                                                    echo ' <td>'.$soyad.'</td>';
                                                    echo '<td>'.$email.'</td>';
-                                                   echo '<td>'.$mesaj.'</td>';                                                                         
-                                                   echo ' <td><input type="submit" class="silButton" value="Sil"></td>';
-                                                   echo ' <td><input type="submit" class="aktifPasifButton" value="Aktif"> </td>';
-                                                   echo '<td><input type="submit" class="duzenleButton" value="Düzenle"> </td>';
-                                                   echo '</tr>';
+                                                   echo '<td><p>'.$mesaj.'</p></td>';                                                                      
+                                                  echo '</tr>';
                                                   }
                                                    
                                                     ?>

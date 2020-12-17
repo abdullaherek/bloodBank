@@ -1,3 +1,13 @@
+<?php 
+      require_once "includes/pdo.php";      
+      if(!isset($_SESSION["isim"])){ // echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
+        header("Refresh: 0; url= login.php");;
+}
+       
+        else{
+           header("Refresh: 9999999999; url= admin.php");
+        }
+      ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,67 +33,56 @@
                                         <table class="table table-dark table-striped">
                                                 <thead>
                                                   <tr>
-                                                    <th>Ad</th>
-                                                    <th>Soyad</th>
-                                                    <th>Mail</th>
-                                                    <th>İletişim Num.</th>
-                                                    <th>İl</th>
-                                                    <th>İlçe</th>
+                                                    <th>Kullanıcı Adı</th>
+                                                    <th>E-mail</th> 
+                                                    <th>Kullanıcı Rol</th>
+                                                    <th>Parola</th>                                                                                                 
                                                     <th>Sil</th>
                                                     <th>Düzenle</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                  <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>05555555555</td>
-                                                    <td>aaaaa</td>
-                                                    <td>aaaaa</td>
-                                                    <td><input type="submit" class="silButton" value="Sil"></td>
-                                                    <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                  </tr>
-                                                  <tr>
-                                                        <td>John</td>
-                                                        <td>Doe</td>
-                                                        <td>john@example.com</td>
-                                                        <td>05555555555</td>
-                                                        <td>aaaaa</td>
-                                                        <td>aaaaa</td>
-                                                        <td><input type="submit" class="silButton" value="Sil"></td>
-                                                        <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>John</td>
-                                                        <td>Doe</td>
-                                                        <td>john@example.com</td>
-                                                        <td>05555555555</td>
-                                                        <td>aaaaa</td>
-                                                        <td>aaaaa</td>
-                                                        <td><input type="submit" class="silButton" value="Sil"></td>
-                                                        <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>John</td>
-                                                        <td>Doe</td>
-                                                        <td>john@example.com</td>
-                                                        <td>05555555555</td>
-                                                        <td>aaaaa</td>
-                                                        <td>aaaaa</td>
-                                                        <td><input type="submit" class="silButton" value="Sil"></td>
-                                                        <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>John</td>
-                                                        <td>Doe</td>
-                                                        <td>john@example.com</td>
-                                                        <td>05555555555</td>
-                                                        <td>aaaaa</td>
-                                                        <td>aaaaa</td>
-                                                        <td><input type="submit" class="silButton" value="Sil"></td>
-                                                        <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                      </tr>
+                                                 <?php
+                                                 $kullanici_sifre="s%3A32%3A%22eJwrT%2FeuKE0JsUiNdA8LLTewBQAzCAWb%22%3B";
+                                                 $unhashing_sifre;
+                                                 function encrypt_decrypt($action, $kullanici_sifre) {
+                                                     $output = true;
+                                                     $sifreleme_kodlari = 'AES-256-CTR'; //sifreleme yontemi
+                                                     $sifreleme_key = '25760'; //sifreleme anahtari
+                                                     $sifre_baslangici = '**109'; //gerekli sifreleme baslama vektoru
+                                                     $key = hash('sha256', $sifreleme_key); //anahtar hast fonksiyonu ile sha256 algoritmasi ile sifreleniyor
+                                                     $key_substr = substr(hash('sha256', $sifre_baslangici), 0, 16); //0. ve 16. sifrelenmiş harfi göstermeyecek
+                                                     if( $action == 'decrypt' ) {
+                                                      $output = openssl_decrypt(gzuncompress(base64_decode(unserialize(urldecode($kullanici_sifre)))),$sifreleme_kodlari, $key, 0, $key_substr);
+                                                     }	             
+                                                     return $output;
+                                                   }           
+                                                 
+        
+                                                $kullanici_stmt = $pdo->query("SELECT * FROM kayit");
+                                                while($kullanici_row = $kullanici_stmt->fetch(PDO :: FETCH_ASSOC))
+                                                  {                          
+                                                    $kullanici_ad = $kullanici_row['kullanici_adi'];
+                                                    $kullanici_sifre = $kullanici_row['kullanici_sifre'];
+                                                    $kullanici_email = $kullanici_row['email'];
+                                                    $kullanici_rol = $kullanici_row['rol'];                                                    
+                                                   
+                                                   $unhashing_sifre =  encrypt_decrypt('decrypt',$kullanici_sifre);///// database'deki şifrelerin asıl yazılışı                                                 
+
+                                                   echo ' <tr>';
+                                                   echo ' <td>'.$kullanici_ad.'</td>';
+                                                   echo ' <td>'.$kullanici_email.'</td>';
+                                                   echo '<td>'.$kullanici_rol.'</td>';
+                                                   echo '<td>'.$unhashing_sifre.'</td>';                                                                       
+                                                   echo ' <td><input type="submit" class="silButton" value="Sil"></td>';
+                                                   echo ' <td><input type="submit" class="aktifPasifButton" value="Aktif"> </td>';
+                                                   echo '<td><input type="submit" class="duzenleButton" value="Düzenle"> </td>';
+                                                   echo '</tr>';
+                                                  }
+                                                  
+                                                
+                                                   
+                                                    ?>
                                                 </div>
 
                                     

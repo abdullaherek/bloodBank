@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 16 Ara 2020, 23:15:13
--- Sunucu sürümü: 10.4.11-MariaDB
--- PHP Sürümü: 7.4.5
+-- Üretim Zamanı: 17 Ara 2020, 21:07:29
+-- Sunucu sürümü: 10.4.14-MariaDB
+-- PHP Sürümü: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bagislayan_bilgi` (
   `bagislayan_id` int(255) NOT NULL,
-  `ad` varchar(105) NOT NULL,
-  `soyad` varchar(105) NOT NULL,
+  `ad` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `soyad` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ilID` int(11) NOT NULL,
   `ilceID` int(11) NOT NULL,
-  `tel_no` varchar(11) NOT NULL,
+  `tel_no` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `kan_gruplariID` int(11) NOT NULL,
   `kayit_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -43,7 +43,9 @@ CREATE TABLE `bagislayan_bilgi` (
 --
 
 INSERT INTO `bagislayan_bilgi` (`bagislayan_id`, `ad`, `soyad`, `ilID`, `ilceID`, `tel_no`, `kan_gruplariID`, `kayit_id`) VALUES
-(1, 'Berke', '&Ouml;zbek', 2, 387, '12312312312', 2, 3);
+(1, 'Berke', 'Özbek', 2, 387, '12312312312', 2, 3),
+(2, 'Baran', 'Başıbüyük', 62, 890, '05458023262', 1, 2),
+(3, 'Abdullah', 'Erek', 34, 110, '05456899787', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -53,8 +55,9 @@ INSERT INTO `bagislayan_bilgi` (`bagislayan_id`, `ad`, `soyad`, `ilID`, `ilceID`
 
 CREATE TABLE `ihtiyac_bilgi` (
   `ihtiyac_id` int(11) NOT NULL,
-  `ad` varchar(105) NOT NULL,
-  `soyad` varchar(105) NOT NULL,
+  `ad` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `soyad` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel_no` int(255) NOT NULL,
   `ilID` int(11) NOT NULL,
   `ilceID` int(11) NOT NULL,
   `kan_gruplariID` int(11) NOT NULL,
@@ -1157,10 +1160,10 @@ INSERT INTO `ilce` (`ilceID`, `isim`, `ilID`) VALUES
 
 CREATE TABLE `iletisim` (
   `iletisim_id` int(255) NOT NULL,
-  `ad` varchar(105) NOT NULL,
-  `soyad` varchar(105) NOT NULL,
-  `email` varchar(105) NOT NULL,
-  `mesaj` varchar(255) NOT NULL
+  `ad` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `soyad` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mesaj` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1171,7 +1174,7 @@ CREATE TABLE `iletisim` (
 
 CREATE TABLE `kan_gruplari` (
   `kan_gruplariID` int(11) NOT NULL,
-  `kan_gruplari` varchar(60) NOT NULL
+  `kan_gruplari` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1196,10 +1199,10 @@ INSERT INTO `kan_gruplari` (`kan_gruplariID`, `kan_gruplari`) VALUES
 
 CREATE TABLE `kayit` (
   `kayit_id` int(255) NOT NULL,
-  `kullanici_adi` varchar(255) NOT NULL,
-  `kullanici_sifre` varchar(255) NOT NULL,
+  `kullanici_adi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kullanici_sifre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `rol` int(1) NOT NULL,
-  `email` varchar(150) NOT NULL
+  `email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1274,7 +1277,7 @@ ALTER TABLE `kayit`
 -- Tablo için AUTO_INCREMENT değeri `bagislayan_bilgi`
 --
 ALTER TABLE `bagislayan_bilgi`
-  MODIFY `bagislayan_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `bagislayan_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `ihtiyac_bilgi`

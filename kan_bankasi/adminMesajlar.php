@@ -1,3 +1,15 @@
+<?php 
+      require_once "includes/pdo.php";
+      if(!isset($_SESSION["isim"])){ // echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
+        header("Refresh: 0; url= login.php");;
+}
+       
+        else{
+           header("Refresh: 9999999999; url= admin.php");
+        }
+      
+            
+      ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,38 +46,29 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                  <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae vel eveniet cumque. Nam obcaecati modi nemo, a numquam incidunt in, porro voluptatem voluptate iste possimus adipisci illo inventore molestiae. Minus.</p></td>
-                                                    <td><input type="submit" class="silButton" value="Sil"></td>
-                                                    <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                  </tr>
-                                                  <tr>
-                                                        <td>John</td>
-                                                        <td>Doe</td>
-                                                        <td>john@example.com</td>
-                                                        <td><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae vel eveniet cumque. Nam obcaecati modi nemo, a numquam incidunt in, porro voluptatem voluptate iste possimus adipisci illo inventore molestiae. Minus.</p></td>
-                                                        <td><input type="submit" class="silButton" value="Sil"></td>
-                                                        <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>John</td>
-                                                        <td>Doe</td>
-                                                        <td>john@example.com</td>
-                                                        <td><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae vel eveniet cumque. Nam obcaecati modi nemo, a numquam incidunt in, porro voluptatem voluptate iste possimus adipisci illo inventore molestiae. Minus.</p></td>
-                                                        <td><input type="submit" class="silButton" value="Sil"></td>
-                                                        <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td>John</td>
-                                                        <td>Doe</td>
-                                                        <td>john@example.com</td>
-                                                        <td><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae vel eveniet cumque. Nam obcaecati modi nemo, a numquam incidunt in, porro voluptatem voluptate iste possimus adipisci illo inventore molestiae. Minus.</p></td>
-                                                        <td><input type="submit" class="silButton" value="Sil"></td>
-                                                        <td><input type="submit" class="duzenleButton" value="Düzenle"> </td>
-                                                      </tr>
+                                                  <?php
+
+                                                $mesajlar_stmt = $pdo->query("SELECT * FROM iletisim");
+                                                while($mesajlar_row = $mesajlar_stmt->fetch(PDO :: FETCH_ASSOC))
+                                                  {                          
+                                                    $ad = $mesajlar_row['ad'];
+                                                    $soyad = $mesajlar_row['soyad'];
+                                                    $email = $mesajlar_row['email'];
+                                                    $mesaj = $mesajlar_row['mesaj'];
+                                                    
+
+                                                   echo ' <tr>';
+                                                   echo ' <td>'.$ad.'</td>';
+                                                   echo ' <td>'.$soyad.'</td>';
+                                                   echo '<td>'.$email.'</td>';
+                                                   echo '<td>'.$mesaj.'</td>';                                                                         
+                                                   echo ' <td><input type="submit" class="silButton" value="Sil"></td>';
+                                                   echo ' <td><input type="submit" class="aktifPasifButton" value="Aktif"> </td>';
+                                                   echo '<td><input type="submit" class="duzenleButton" value="Düzenle"> </td>';
+                                                   echo '</tr>';
+                                                  }
+                                                   
+                                                    ?>
         
                                                 </div>
                                                 

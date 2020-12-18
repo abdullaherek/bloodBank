@@ -56,7 +56,9 @@ require_once "includes/pdo.php";
                     <div class="form-group">
                       <label class="control-label col-sm-2" for="comment">Mesajınız:</label>
                       <div class="col-sm-10">
+                      <p>
                         <textarea class="form-control mesaj" name="mesaj" rows="5" id="comment"></textarea>
+                        </p>
                       </div>
                     </div>
                     <div class="form-group">        

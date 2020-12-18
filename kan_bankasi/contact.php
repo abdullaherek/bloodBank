@@ -1,3 +1,7 @@
+<?php
+require_once "includes/pdo.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,7 @@
 <?php include_once('content/headerMenu.php');?>
     
    
-    <form>
+    <form action="" method="POST">
     <div class="container contact">
         <div class="row">
             <div class="col-md-3">
@@ -32,27 +36,27 @@
             <div class="col-md-9">
                 <div class="contact-form">
                     <div class="form-group">
-                      <label class="control-label col-sm-2" for="fname">Adınız:</label>
+                      <label class="control-label col-sm-2 " for="fname">Adınız:</label>
                       <div class="col-sm-10">          
-                        <input type="text" class="form-control" id="fname" placeholder="Adınızı Giriniz.." name="fname">
+                        <input type="text" class="form-control ad" id="fname" placeholder="Adınızı Giriniz.." name="ad">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-sm-2" for="lname">Soyadınız:</label>
                       <div class="col-sm-10">          
-                        <input type="text" class="form-control" id="lname" placeholder="Soyadınızı Giriniz.." name="lname">
+                        <input type="text" class="form-control soyad" id="lname" placeholder="Soyadınızı Giriniz.." name="soyad">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-sm-2" for="email">Email:</label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" placeholder="kullanici12@example.com" name="email">
+                        <input type="email" class="form-control email" id="email" placeholder="kullanici12@example.com" name="email">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label col-sm-2" for="comment">Mesajınız:</label>
                       <div class="col-sm-10">
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <textarea class="form-control mesaj" name="mesaj" rows="5" id="comment"></textarea>
                       </div>
                     </div>
                     <div class="form-group">        
@@ -65,6 +69,34 @@
         </div>
     </div>
 </form>
+
+
+<?php
+                        if($_POST){
+                            $ad =   htmlentities(trim($_POST['ad']));
+                            $soyad = htmlentities(trim($_POST['soyad']));
+                            $email = htmlentities(trim($_POST['email']));
+                            $mesaj = htmlentities(trim($_POST['mesaj']));
+
+                            if(empty($ad) || empty($soyad)  || empty($email) || empty($mesaj)   ) {
+                              echo "<script type='text/javascript'>alert('Lütfen Gerekli Yerlerin Dolu Olduğundan Emin Olunuz');</script>";
+                            }
+                      
+                            else{
+                             $addForms_stmt = $pdo->prepare("INSERT INTO iletisim (ad, soyad, email, mesaj) VALUES (:ad, :soyad, :email, :mesaj) ");
+                                  $addForms_stmt->execute(array(
+                                  ':ad' => $ad,
+                                  ':soyad' => $soyad,
+                                  ':email' => $email,
+                                  ':mesaj' => $mesaj
+                                  
+                                  
+                                  ));
+                              
+                                  echo "<script type='text/javascript'>alert('Girdiğiniz bilgiler kaydedildi, size dönüş yapacağız.');</script>";
+                              }
+                          }
+?>
 
 </body>
 </html>

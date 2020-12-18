@@ -23,33 +23,13 @@ if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Önc
 <?php include_once('content/headerMenu.php');?>
     
 
-<?php include_once('content/headerMenu.php');?>
-<form action="" method="POST">
+
+<form action="searchpage_list.php" method="POST">
 
 <div class="container">
     <div class="kaplayan_alan" >
         <div class="bagislayan_bilgi">
-            <!-- <div class="fontlar" > -->
-<!-- 
-              <h1>Adınız:</h1>
-              <h1>Soyadınız:</h1>
-              <h1>Şehir:</h1>
-              <h1>İlçe:</h1>
-              <h1>Tel No:</h1>
-              <h1>Kan Grubu:</h1>
-              <h1>E-Mail:</h1>
-        
-               -->
-  <!-- <div class="box" id="box1">Adınız:</div>
-  <div class="box" id="box2">Soyadınız:</div>
-  <div class="box" id="box3">Şehir:</div>
-  <div class="box" id="box4">İlçe:</div>
-  <div class="box" id="box5">Tel Numaranız:</div>
-  <div class="box" id="box6">Kan Grubunuz:</div>
-  
-
-            </div>       -->
-
+            
 
  
 
@@ -57,7 +37,7 @@ if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Önc
                     
                         
 
-                          <select id="sehirler" name ="ilID" >
+                          <select id="sehirler" name ="sehirID" >
                           <option value="">Bir Şehir Seçiniz</option>
                           <?php
                                 $sehir_stmt = $pdo->query("SELECT * FROM il");
@@ -95,14 +75,13 @@ if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Önc
             </div>
         </div>
                 
-        <a class="button" href="searchpage_list.php">Ara</a> 
+        <input class="button" type="submit" name="bagis_ara" value="Ara" > 
         
         <a class="button" href="bagisisteyen.php">Veya İstek Oluşturun</a>
                
     </div>
 </div>
-
-
+</form>
 
 
 

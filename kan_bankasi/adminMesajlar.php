@@ -1,11 +1,12 @@
 <?php
 session_start();
+ob_start();
 require_once "includes/pdo.php";
 if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
-        header("Refresh: 0; url= login.php");;}
+  header("LOCATION: login.php");}
        
         else{
-           header("Refresh: 9999999999; url= admin.php");
+           header("Refresh: 9999999999; url= adminMesajlar.php");
         }
        ?>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                         <div class="AdminSectionInner">
 
                                 <div class="adminSectionTable">
-
+                                <form action ="" method ="POST">
                                         <table class="table table-dark table-striped">
                                                 <thead>
                                                   <tr>
@@ -38,7 +39,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                     <th>Soyad</th>
                                                     <th>Mail</th>
                                                     <th>Mesaj</th>                                                   
-                                                    
+                                                    <th>Sil</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody>
@@ -46,7 +47,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
 
                                                 $mesajlar_stmt = $pdo->query("SELECT * FROM iletisim");
                                                 while($mesajlar_row = $mesajlar_stmt->fetch(PDO :: FETCH_ASSOC))
-                                                  {                          
+                                                  { $mesajlar_id=$mesajlar_row['iletisim_id'];                         
                                                     $ad = $mesajlar_row['ad'];
                                                     $soyad = $mesajlar_row['soyad'];
                                                     $email = $mesajlar_row['email'];
@@ -59,10 +60,22 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                    echo ' <td>'.$soyad.'</td>';
                                                    echo '<td>'.$email.'</td>';
                                                    echo '<td><p>'.$mesaj.'</p></td>';                                                                      
-                                                  echo '</tr>';
+                                                   echo ' <td><input type="submit"  name="sil" value="Sil"></td>';
+                                                 
                                                   }
-                                                   
+                                               
                                                     ?>
+                                            </table>
+                                            
+                                <?php
+                                 if(isset($_POST['sil'])){
+                                  $query = $pdo->prepare("DELETE FROM iletisim WHERE iletisim_id=:id");
+                                  $query->bindParam(':id',$mesajlar_id);
+                                  $delete = $query->execute();
+                                  header("Refresh: 0; url= adminMesajlar.php");                                  
+                                 }
+                                 
+                                 ?>
         
                                                 </div>
                                                 
@@ -73,6 +86,9 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
 
         </div>
 
-        
+        </form>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

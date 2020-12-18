@@ -1,8 +1,9 @@
 <?php
 session_start();
+ob_start();
 require_once "includes/pdo.php";
 if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
-        header("Refresh: 0; url= login.php");;}
+  header("LOCATION: AdminKullanicilar.php");}
        
         else{
            header("Refresh: 9999999999; url= admin.php");
@@ -30,6 +31,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                         </div>
                         <div class="AdminSectionInner">
                                 <div class="AdminSectionTable">
+                                <form action ="" method ="post">
                                         <table class="table table-dark table-striped">
                                                 <thead>
                                                   <tr>
@@ -60,7 +62,8 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
         
                                                 $kullanici_stmt = $pdo->query("SELECT * FROM kayit");
                                                 while($kullanici_row = $kullanici_stmt->fetch(PDO :: FETCH_ASSOC))
-                                                  {                          
+                                                  {
+                                                    $kullanici_id=$kullanici_row['kayit_id'];                  
                                                     $kullanici_ad = $kullanici_row['kullanici_adi'];
                                                     $kullanici_sifre = $kullanici_row['kullanici_sifre'];
                                                     $kullanici_email = $kullanici_row['email'];
@@ -73,18 +76,26 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                    echo ' <td>'.$kullanici_email.'</td>';
                                                    echo '<td>'.$kullanici_rol.'</td>';
                                                    echo '<td>'.$unhashing_sifre.'</td>';                                                                       
-                                                   echo ' <td><input type="submit" class="silButton" value="Sil"></td>';
-                                                   echo '<td><input type="submit" class="duzenleButton" value="Rol Seç"> </td>';
-                                                   echo '</tr>';
-                                                  }
+                                                   echo ' <td><input type="submit"  name="sil" value="Sil"></td>';
+                                                   echo '<td><input type="submit" name="rol_sec" value="Rol Seç"> </td>';
                                                   
-                                                
-                                                   
-                                                    ?>
+                                                  }
+                                               
+                                                  ?>
+                                          </table>
+                                          
+                              <?php
+                               if(isset($_POST['sil'])){
+                                $query = $pdo->prepare("DELETE FROM kayit WHERE kayit_id=:id");
+                                $query->bindParam(':id',$kullanici_id);
+                                $delete = $query->execute();
+                                header("Refresh: 0; url= AdminKullanicilar.php");
+                                
+                               }
+                              
+                               
+                               ?>
                                                 </div>
-
-                                    
-                                                
 
                         </div>
 
@@ -92,6 +103,9 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
 
         </div>
 
-        
+       </form> 
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

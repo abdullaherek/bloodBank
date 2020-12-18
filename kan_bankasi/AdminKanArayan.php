@@ -1,11 +1,12 @@
 <?php
 session_start();
+ob_start();
 require_once "includes/pdo.php";
 if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
-        header("Refresh: 0; url= login.php");;}
+  header("LOCATION: login.php");}
        
         else{
-           header("Refresh: 9999999999; url= admin.php");
+           header("Refresh: 9999999999; url= AdminKanArayan.php");
         }
        ?>
 <!DOCTYPE html>
@@ -29,6 +30,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                         </div>
                         <div class="AdminSectionInner">
                                 <div class="AdminSectionTable">
+                                <form action ="" method ="post">
                                 <table class="table table-dark table-striped">
                                         <thead>
                                           <tr>
@@ -39,8 +41,6 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                             <th>İl</th>
                                             <th>İlçe</th>
                                             <th>Sil</th>
-                                            <th>Aktif/Pasif</th>
-                                            <th>Düzenle</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -48,7 +48,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
 
                                                 $arayan_stmt = $pdo->query("SELECT * FROM ihtiyac_bilgi");
                                                 while($arayan_row = $arayan_stmt->fetch(PDO :: FETCH_ASSOC))
-                                                  {                          
+                                                  { $arayan_id = $arayan_row['ihtiyac_id'];                         
                                                     $ad = $arayan_row['ad'];
                                                     $soyad = $arayan_row['soyad'];
                                                     $ilID = $arayan_row['ilID'];
@@ -102,13 +102,23 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                    echo '<td>'.$tel_no.'</td>';
                                                    echo '<td>'.$kan.'</td>';
                                                    echo '<td>'.$email.'</td>';                       
-                                                   echo ' <td><input type="submit" class="silButton" value="Sil"></td>';
-                                                   echo ' <td><input type="submit" class="aktifPasifButton" value="Aktif"> </td>';
-                                                   echo '<td><input type="submit" class="duzenleButton" value="Düzenle"> </td>';
-                                                   echo '</tr>';
+                                                   echo ' <td><input type="submit"  name="sil" value="Sil"></td>';
+                                                 
                                                   }
-                                                   
+                                               
                                                     ?>
+                                            </table>
+                                            
+                                <?php
+                                 if(isset($_POST['sil'])){
+                                  $query = $pdo->prepare("DELETE FROM ihtiyac_bilgi WHERE ihtiyac_id=:id");
+                                  $query->bindParam(':id',$arayan_id);
+                                  $delete = $query->execute();
+                                  header("Refresh: 0; url= AdminKanArayan.php");
+                                  
+                                 }
+                                 
+                                 ?>
                                         </div>
                         </div>
 
@@ -116,6 +126,9 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
 
         </div>
 
-        
+        </form>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

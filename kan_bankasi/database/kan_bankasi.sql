@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 17 Ara 2020, 21:07:29
+-- Üretim Zamanı: 18 Ara 2020, 17:51:48
 -- Sunucu sürümü: 10.4.14-MariaDB
 -- PHP Sürümü: 7.2.34
 
@@ -29,23 +29,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bagislayan_bilgi` (
   `bagislayan_id` int(255) NOT NULL,
-  `ad` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `soyad` varchar(105) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ad` varchar(105) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
+  `soyad` varchar(105) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ilID` int(11) NOT NULL,
   `ilceID` int(11) NOT NULL,
-  `tel_no` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel_no` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kan_gruplariID` int(11) NOT NULL,
   `kayit_id` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Tablo döküm verisi `bagislayan_bilgi`
 --
 
 INSERT INTO `bagislayan_bilgi` (`bagislayan_id`, `ad`, `soyad`, `ilID`, `ilceID`, `tel_no`, `kan_gruplariID`, `kayit_id`) VALUES
-(1, 'Berke', 'Özbek', 2, 387, '12312312312', 2, 3),
-(2, 'Baran', 'Başıbüyük', 62, 890, '05458023262', 1, 2),
-(3, 'Abdullah', 'Erek', 34, 110, '05456899787', 2, 2);
+(1, 'asdasd', 'asdasd', 3, 10, '05458023262', 4, 2),
+(2, '&Ouml;m&uuml;r', 'qsqws', 57, 95, '05312656712', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -1211,8 +1210,7 @@ CREATE TABLE `kayit` (
 
 INSERT INTO `kayit` (`kayit_id`, `kullanici_adi`, `kullanici_sifre`, `rol`, `email`) VALUES
 (1, 'admin', 's%3A32%3A%22eJwrT%2FeuKE0JsUiNdA8LLTewBQAzCAWb%22%3B', 1, 'baranbsbykk@gmail.com'),
-(2, 'deneme1', 's%3A28%3A%22eJyrcEwsKUtJc08xTXUDAB3HBFo%3D%22%3B', 0, 'deneme@gmail.com'),
-(3, 'brkeozbk', 's%3A24%3A%22eJzLDvMoN%2FfUDgMADCACgg%3D%3D%22%3B', 0, 'brkeozbk@gmail.com');
+(2, 'deneme1', 's%3A28%3A%22eJyrcEwsKUtJc08xTXUDAB3HBFo%3D%22%3B', 0, 'deneme@gmail.com');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -1277,7 +1275,7 @@ ALTER TABLE `kayit`
 -- Tablo için AUTO_INCREMENT değeri `bagislayan_bilgi`
 --
 ALTER TABLE `bagislayan_bilgi`
-  MODIFY `bagislayan_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `bagislayan_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `ihtiyac_bilgi`
@@ -1295,7 +1293,7 @@ ALTER TABLE `iletisim`
 -- Tablo için AUTO_INCREMENT değeri `kayit`
 --
 ALTER TABLE `kayit`
-  MODIFY `kayit_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kayit_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar

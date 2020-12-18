@@ -25,8 +25,8 @@
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="aboutus">
                         <h2 class="aboutus-title">Neden Kan Bağışı Yapılmalıdır?</h2>
-                        <p class="aboutus-text">Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
-                        <p class="aboutus-text">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem</p>
+                        <p class="aboutus-text">Kan, en temel yaşam kaynağıdır. Bir canlıda, kan akışının durması demek, hayatının sona ermesi anlamına gelmektedir. Yetişkin bir insanda ortalama 5-6 litre kan bulunur. Kan, akciğerden aldığı oksijeni dokulara ve dokularda üretilen karbondioksidi akciğere taşır. Gerekli besin ve hormonları, dokuların süzgecinden geçirir. İletirken de, artık maddeleri atmak için akciğer, karaciğer ve böbrek gibi organlara taşır. Ayrıca vücut ısı dengesini sağlar, asit-baz dengesini korur.</p>
+                        <p class="aboutus-text">Kanserojen maddelerden, yabancı maddelerden, mikroplardan ve virüslerden korur. Pıhtılaşma yaparak kan kayıplarını önler. İnsanların vücudunda gerekenden az bulunduğu durumlarda, kan alışverişinin yapılmasına neden olmaktadır. Kanın, insan hayatındaki önemi hayati seviyededir.</p>
                      
                     </div>
                 </div>
@@ -44,7 +44,8 @@
                                 </div>
                                 <div class="feature-content">
                                     <h4>Kimler Bağış Yapabilir?</h4>
-                                    <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
+                                    <p>18-65 yaş aralığında 50 kilogramın üzerindeki her sağlıklı birey kan bağışçısı adayı olabilir. (19 yaşından gün almak, 65’ini doldurmamak gerekir.) 
+İlk kez kan bağışında bulunacaklar için üst yaş sınırı: 61 yaşından gün almamış olmalı. Düzenli kan bağışçıları için üst yaş sınırı 65 yaşını doldurduktan, 70 yaşından gün alana kadar kan bağış merkezi doktorunun onayı olmak şartıyla yılda en fazla 1 kez olmak üzere kan bağışlayabilir. </p>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +56,7 @@
                                 </div>
                                 <div class="feature-content">
                                     <h4>Kan Bağışının Yararı Veya Zararı Var mıdır?</h4>
-                                    <p>Donec vitae sapien ut libero venenatis faucibu. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt</p>
+                                    <p>Kan bağışlamanın sağlığa herhangi bir yararı olduğuna dair bilimsel bir çalışma yoktur. Kan bağışının bağışçıya en önemli faydası hiç tanımadığı üç kişinin hayatını kurtarmaktır.</p>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +67,9 @@
                                 </div>
                                 <div class="feature-content">
                                     <h4>Ne Kadar Sıklıkta Bağışta Bulunabilirim?</h4>
-                                    <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
+                                    <p>Tam kan bağışında;
+Erkekler 90 günde bir
+Kadınlar 120 gün de bir</p>
                                 </div>
                             </div>
                         </div>

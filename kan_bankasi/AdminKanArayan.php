@@ -37,10 +37,11 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                             <th>Sıra No</th>
                                             <th>Ad</th>
                                             <th>Soyad</th>
-                                            <th>Mail</th>
-                                            <th>Aradığı Kan Grubu</th>
+                                            <th>Telefon</th>
                                             <th>İl</th>
                                             <th>İlçe</th>
+                                            <th>Aradığı Kan Grubu</th>
+                                            <th>Mail</th>
                                             <th>Sil</th>
                                           </tr>
                                         </thead>

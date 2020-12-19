@@ -1,7 +1,7 @@
 <?php 
 require_once "includes/pdo.php";
 include_once('content/headerMenu.php');
-if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
+if( (!isset($_SESSION['isim'])) && (!isset($_SESSION['admin']))){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
  header("Refresh: 0; url= login.php");;}
 
  else{
@@ -27,28 +27,7 @@ if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Önc
 <div class="container">
     <div class="kaplayan_alan" >
         <div class="bagislayan_bilgi">
-            <!-- <div class="fontlar" > -->
-<!-- 
-              <h1>Adınız:</h1>
-              <h1>Soyadınız:</h1>
-              <h1>Şehir:</h1>
-              <h1>İlçe:</h1>
-              <h1>Tel No:</h1>
-              <h1>Kan Grubu:</h1>
-              <h1>E-Mail:</h1>
-        
-               -->
-  <!-- <div class="box" id="box1">Adınız:</div>
-  <div class="box" id="box2">Soyadınız:</div>
-  <div class="box" id="box3">Şehir:</div>
-  <div class="box" id="box4">İlçe:</div>
-  <div class="box" id="box5">Tel Numaranız:</div>
-  <div class="box" id="box6">Kan Grubunuz:</div>
   
-
-            </div>       -->
-
-
  
 
             <div class="textler"  >

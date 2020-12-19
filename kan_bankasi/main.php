@@ -1,7 +1,8 @@
 <?php 
 require_once "includes/pdo.php";
 include_once('content/headerMenu.php');
-if(!isset($_SESSION["isim"])){  echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
+if( (!isset($_SESSION['isim'])) && (!isset($_SESSION['admin']))){
+      echo "<script type='text/javascript'>alert('Öncelikle Giriş Yapmanız Gerekmektedir!')</script>";
  header("Refresh: 0; url= login.php");;}
 
  else{

@@ -23,7 +23,8 @@ session_start();
 
 <?php
 
-if(!isset($_SESSION["isim"])){
+if( (!isset($_SESSION['isim'])) && (!isset($_SESSION['admin'])) )
+{
 	
                        
                           echo '<a id="main" href ="login.php">Giriş Yap</a></li>';        

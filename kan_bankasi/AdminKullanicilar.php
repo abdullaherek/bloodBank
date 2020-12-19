@@ -31,10 +31,11 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                         </div>
                         <div class="AdminSectionInner">
                                 <div class="AdminSectionTable">
-                                <form action ="" method ="post">
+                                
                                         <table class="table table-dark table-striped">
                                                 <thead>
                                                   <tr>
+                                                  <th>İd</th>
                                                     <th>Kullanıcı Adı</th>
                                                     <th>E-mail</th> 
                                                     <th>Kullanıcı Rol</th>
@@ -43,7 +44,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                     <th>Düzenle</th>
                                                   </tr>
                                                 </thead>
-                                                <tbody>
+                                               
                                                  <?php                                                
                                                  $unhashing_sifre;
                                                  function encrypt_decrypt($action, $kullanici_sifre) {
@@ -59,41 +60,76 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                      return $output;
                                                    }           
                                                  
-        
-                                                $kullanici_stmt = $pdo->query("SELECT * FROM kayit");
-                                                while($kullanici_row = $kullanici_stmt->fetch(PDO :: FETCH_ASSOC))
+                                                $sonuc=mysqli_query($baglanti,"SELECT * from kayit");
+                                                mysqli_set_charset($baglanti, "utf8");                                                
+                                                while($kullanici_row=mysqli_fetch_assoc($sonuc))
                                                   {
-                                                    $kullanici_id=$kullanici_row['kayit_id'];                  
-                                                    $kullanici_ad = $kullanici_row['kullanici_adi'];
-                                                    $kullanici_sifre = $kullanici_row['kullanici_sifre'];
-                                                    $kullanici_email = $kullanici_row['email'];
-                                                    $kullanici_rol = $kullanici_row['rol'];                                                    
+                                                    $kullanici_id=$kullanici_row['kayit_id'];  
+                                                    $kullanici_sifre=$kullanici_row['kullanici_sifre'];
                                                    
-                                                   $unhashing_sifre =  encrypt_decrypt('decrypt',$kullanici_sifre);///// database'deki şifrelerin asıl yazılışı                                                 
-
+                                                   $unhashing_sifre =  encrypt_decrypt('decrypt',$kullanici_sifre);///// database'deki şifrelerin asıl yazılışı  
+                                                   echo '<form action="" method="POST">';
+                                                   echo '<input type="hidden" name="kayit_id" value="'.$kullanici_id.'">';
+                                                   echo ' <tbody>';
                                                    echo ' <tr>';
-                                                   echo ' <td>'.$kullanici_ad.'</td>';
-                                                   echo ' <td>'.$kullanici_email.'</td>';
-                                                   echo '<td>'.$kullanici_rol.'</td>';
+                                                   echo ' <td>'.$kullanici_row['kayit_id'].'</td>';
+                                                   echo ' <td>'.$kullanici_row['kullanici_adi'].'</td>';
+                                                   echo ' <td>'.$kullanici_row['email'].'</td>';
+                                                   echo '<td>'.$kullanici_row['rol'].'</td>';
+                                                   echo '<input type="hidden" name="rol" value="'.$kullanici_row['rol'].'">';
                                                    echo '<td>'.$unhashing_sifre.'</td>';                                                                       
                                                    echo ' <td><input type="submit"  name="sil" value="Sil"></td>';
-                                                   echo '<td><input type="submit" name="rol_sec" value="Rol Seç"> </td>';
-                                                  
+                                                   echo '<td><input type="submit"  name="guncelle" value="Rol Değiştir"></td>';
+                                                   echo ' </tr>';
+                                                   echo '</tbody>';
+                                                   echo '</form>';
                                                   }
                                                
                                                   ?>
                                           </table>
                                           
                               <?php
-                               if(isset($_POST['sil'])){
-                                $query = $pdo->prepare("DELETE FROM kayit WHERE kayit_id=:id");
-                                $query->bindParam(':id',$kullanici_id);
-                                $delete = $query->execute();
-                                header("Refresh: 0; url= AdminKullanicilar.php");
-                                
-                               }
-                              
+                              if(isset($_POST['sil'])){
+                            $kayit_id = $_POST['kayit_id'];
+                            $sql = "DELETE FROM kayit WHERE kayit_id='$kayit_id'";
+                            $sonuc=mysqli_query($baglanti,"select * from kayit where kayit_id='$kayit_id'");
+                            $satir=mysqli_fetch_assoc($sonuc);
+                                if (mysqli_query($baglanti, $sql)) {  // 
+                              echo "Record deleted successfully";
+                              header('LOCATION: AdminKullanicilar.php');
+                            } else {
+                            echo "Error deleting record: " . mysqli_error($baglanti);
+                            }
+                    
+                            }
                                
+                            if(isset($_POST['guncelle'])){
+                              $kayit_id = $_POST['kayit_id']; 
+                              $rol_kontrol=$_POST['rol'];
+                              $rol='0';
+                              $rol1='1';
+                              if($rol_kontrol == 1){
+                                   $sql = "update kayit set rol = '$rol' where kayit_id ='$kayit_id'";
+                                  if($baglanti->query($sql) ==   true){
+                                    header('LOCATION: AdminKullanicilar.php');
+                                  }else {
+                                    echo "Hata : ". $baglanti->error;
+                                    header('LOCATION: AdminKullanicilar.php');
+                                  }
+                              }
+
+                             else if($rol_kontrol == 0){
+                              $sql = "update kayit set rol = '$rol1' where kayit_id ='$kayit_id'";
+                              if($baglanti->query($sql) ==   true){
+                                header('LOCATION: AdminKullanicilar.php');
+                              }else {
+                                echo "Hata : ". $baglanti->error;
+                                header('LOCATION: AdminKullanicilar.php');
+                              }
+
+                               }
+                             
+                              }
                                ?>
                                                 </div>
 
@@ -103,7 +139,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
 
         </div>
 
-       </form> 
+       
 </body>
 </html>
 <?php

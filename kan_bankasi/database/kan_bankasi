@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 18 Ara 2020, 17:51:48
+-- Üretim Zamanı: 19 Ara 2020, 14:56:19
 -- Sunucu sürümü: 10.4.14-MariaDB
 -- PHP Sürümü: 7.2.34
 
@@ -37,14 +37,6 @@ CREATE TABLE `bagislayan_bilgi` (
   `kan_gruplariID` int(11) NOT NULL,
   `kayit_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Tablo döküm verisi `bagislayan_bilgi`
---
-
-INSERT INTO `bagislayan_bilgi` (`bagislayan_id`, `ad`, `soyad`, `ilID`, `ilceID`, `tel_no`, `kan_gruplariID`, `kayit_id`) VALUES
-(1, 'asdasd', 'asdasd', 3, 10, '05458023262', 4, 2),
-(2, '&Ouml;m&uuml;r', 'qsqws', 57, 95, '05312656712', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -1275,7 +1267,7 @@ ALTER TABLE `kayit`
 -- Tablo için AUTO_INCREMENT değeri `bagislayan_bilgi`
 --
 ALTER TABLE `bagislayan_bilgi`
-  MODIFY `bagislayan_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `bagislayan_id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `ihtiyac_bilgi`

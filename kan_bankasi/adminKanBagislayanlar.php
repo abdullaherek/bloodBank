@@ -29,12 +29,11 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                 <h1 class="AdmiBarTittle">Güncel Kan Bağışlayanlar Listesi</h1>
                         </div>
                         <div class="AdminSectionInner">
-                                <div class="AdminSectionTable">
-                                <form action ="" method ="post">
+                                <div class="AdminSectionTable">                               
                                 <table class="table table-dark table-striped">
                                         <thead>
                                           <tr >
-                                          <th>İd</th>
+                                          
                                             <th>Ad</th>
                                             <th>Soyad</th>
                                             <th>Mail</th>
@@ -43,19 +42,21 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                             <th>İl</th>
                                             <th>İlçe</th>
                                             <th>Sil</th>
+                                            
 
                                                                          
                                           </tr>
                                         </thead>
-                                        <tbody>
                                          <?php
 
                                             
-                                                   $bagislayan_stmt = $pdo->query("SELECT * FROM bagislayan_bilgi");
-                                                      
-                                                while($bagislayan_row = $bagislayan_stmt->fetch(PDO :: FETCH_ASSOC))
-                                                  {                   
-                                                     
+                                                  
+                  
+                                                   $sonuc=mysqli_query($baglanti,"SELECT * from bagislayan_bilgi");
+                                                   mysqli_set_charset($baglanti, "utf8");                                                   
+                                                 
+                                                while($bagislayan_row=mysqli_fetch_assoc($sonuc))
+                                                  {   
                                                     $bagislayan_id = $bagislayan_row['bagislayan_id'];
                                                     $ad = $bagislayan_row['ad'];
                                                     $soyad = $bagislayan_row['soyad'];
@@ -101,9 +102,11 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
 
                                                      }
                                             
-                                                     
+                                                   echo '<form action="" method="POST">'; 
+                                                   echo '<input type ="hidden" name ="bagislayan_id" value = "'.$bagislayan_id.'">';
+                                                   echo ' <tbody>';
                                                    echo ' <tr>';
-                                                   echo ' <td>'.$bagislayan_id.'</td>';                                                   
+                                                   echo ' <td>'.$bagislayan_id.'</td>';                                                                                                 
                                                    echo ' <td>'.$ad.'</td>';
                                                    echo ' <td>'.$soyad.'</td>';
                                                    echo '<td>'.$email.'</td>';
@@ -111,23 +114,32 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                    echo '<td>'.$kan.'</td>';   
                                                    echo '<td>'.$il.'</td>';
                                                    echo '<td>'.$ilce.'</td>';                                           
-                                                   echo ' <td><input type="submit"  name="sil" value="Sil"></td>';
-                                                 
+                                                   echo ' <td><input type="submit"  name="sil"  value="Sil"></td>';
+                                                   echo ' </tr>';
+                                                   echo '</tbody>';
+                                                   echo '</form>';
                                                   }
                                                
                                                     ?>
                                             </table>
-                                            
-                                <?php
-                                 if(isset($_POST['sil'])){
-                                  $query = $pdo->prepare("DELETE FROM bagislayan_bilgi WHERE bagislayan_id=:id");
-                                  $query->bindParam(':id',$bagislayan_id);
-                                  $delete = $query->execute();
-                                  header("Refresh: 0; url= adminKanBagislayanlar.php");
-                                  
-                                 }
-                                 
-                                 ?>
+                                            <?php  
+                                              if(isset($_POST['sil'])){
+                                                $bagislayan_id = $_POST['bagislayan_id'];
+                                                $sql = "DELETE FROM bagislayan_bilgi WHERE bagislayan_id='$bagislayan_id'";
+                                                $sonuc=mysqli_query($baglanti,"SELECT * from bagislayan_bilgi where bagislayan_id='$bagislayan_id'");
+                                                $satir=mysqli_fetch_assoc($sonuc);
+                                                    if (mysqli_query($baglanti, $sql)) {  // 
+                                                  echo "Record deleted successfully";
+                                                  header('LOCATION: adminKanBagislayanlar.php');
+                                                } else {
+                                                echo "Error deleting record: " . mysqli_error($baglanti);
+                                                }
+                                        
+                                                }  
+                                                    
+                                                   
+                                                   ?>
+                               
                                   
                                              
                     </div>
@@ -138,7 +150,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
         </div>
         
 
-     </form> 
+     
 </body>
 </html>
 <?php

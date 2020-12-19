@@ -35,7 +35,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                         <table class="table table-dark table-striped">
                                                 <thead>
                                                   <tr>
-                                                  <th>İd</th>
+                                                  <th>Sıra No</th>
                                                     <th>Kullanıcı Adı</th>
                                                     <th>E-mail</th> 
                                                     <th>Kullanıcı Rol</th>

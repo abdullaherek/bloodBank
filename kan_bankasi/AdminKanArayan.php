@@ -30,10 +30,11 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                         </div>
                         <div class="AdminSectionInner">
                                 <div class="AdminSectionTable">
-                                <form action ="" method ="post">
                                 <table class="table table-dark table-striped">
                                         <thead>
                                           <tr>
+                                            
+                                            <th>Sıra No</th>
                                             <th>Ad</th>
                                             <th>Soyad</th>
                                             <th>Mail</th>
@@ -46,9 +47,11 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                         <tbody>
                                           <?php
 
-                                                $arayan_stmt = $pdo->query("SELECT * FROM ihtiyac_bilgi");
-                                                while($arayan_row = $arayan_stmt->fetch(PDO :: FETCH_ASSOC))
-                                                  { $arayan_id = $arayan_row['ihtiyac_id'];                         
+                                                $sonuc=mysqli_query($baglanti,"SELECT * from ihtiyac_bilgi");
+                                                mysqli_set_charset($baglanti, "utf8");
+                                                while($arayan_row=mysqli_fetch_assoc($sonuc))
+                                                  { 
+                                                    $arayan_id = $arayan_row['ihtiyac_id'];                         
                                                     $ad = $arayan_row['ad'];
                                                     $soyad = $arayan_row['soyad'];
                                                     $ilID = $arayan_row['ilID'];
@@ -92,9 +95,11 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                        
 
                                                      }
-                                            
-
+                                                   echo '<form action="" method="POST">'; 
+                                                   echo '<input type ="hidden" name ="arayan_id" value = "'.$arayan_id.'">';
+                                                   echo ' <tbody>';
                                                    echo ' <tr>';
+                                                   echo ' <td>'.$arayan_id.'</td>';
                                                    echo ' <td>'.$ad.'</td>';
                                                    echo ' <td>'.$soyad.'</td>';
                                                    echo '<td>'.$il.'</td>';
@@ -103,20 +108,28 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                    echo '<td>'.$kan.'</td>';
                                                    echo '<td>'.$email.'</td>';                       
                                                    echo ' <td><input type="submit"  name="sil" value="Sil"></td>';
-                                                 
+                                                   echo ' </tr>';
+                                                   echo '</tbody>';
+                                                   echo '</form>';
                                                   }
                                                
                                                     ?>
                                             </table>
                                             
                                 <?php
-                                 if(isset($_POST['sil'])){
-                                  $query = $pdo->prepare("DELETE FROM ihtiyac_bilgi WHERE ihtiyac_id=:id");
-                                  $query->bindParam(':id',$arayan_id);
-                                  $delete = $query->execute();
-                                  header("Refresh: 0; url= AdminKanArayan.php");
-                                  
-                                 }
+                                if(isset($_POST['sil'])){
+                                  $arayan_id = $_POST['arayan_id'];
+                                  $sql = "DELETE FROM ihtiyac_bilgi WHERE ihtiyac_id='$arayan_id'";
+                                  $sonuc=mysqli_query($baglanti,"SELECT * from ihtiyac_bilgi where ihtiyac_id='$arayan_id'");
+                                  $satir=mysqli_fetch_assoc($sonuc);
+                                      if (mysqli_query($baglanti, $sql)) {   
+                                    echo "Record deleted successfully";
+                                    header('LOCATION: AdminKanArayan.php');
+                                  } else {
+                                  echo "Error deleting record: " . mysqli_error($baglanti);
+                                  }
+                          
+                                  }  
                                  
                                  ?>
                                         </div>

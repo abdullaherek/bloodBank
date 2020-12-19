@@ -33,7 +33,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                 <table class="table table-dark table-striped">
                                         <thead>
                                           <tr >
-                                          
+                                            <th>Sıra No</th>
                                             <th>Ad</th>
                                             <th>Soyad</th>
                                             <th>Mail</th>
@@ -128,7 +128,7 @@ if(!isset($_SESSION["admin"])){  echo "<script type='text/javascript'>alert('Ön
                                                 $sql = "DELETE FROM bagislayan_bilgi WHERE bagislayan_id='$bagislayan_id'";
                                                 $sonuc=mysqli_query($baglanti,"SELECT * from bagislayan_bilgi where bagislayan_id='$bagislayan_id'");
                                                 $satir=mysqli_fetch_assoc($sonuc);
-                                                    if (mysqli_query($baglanti, $sql)) {  // 
+                                                    if (mysqli_query($baglanti, $sql)) {   
                                                   echo "Record deleted successfully";
                                                   header('LOCATION: adminKanBagislayanlar.php');
                                                 } else {
